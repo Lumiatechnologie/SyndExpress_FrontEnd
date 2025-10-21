@@ -1,6 +1,7 @@
 import axios from "axios";
     const accesstoken= localStorage.getItem("auth");
     const auth = accesstoken && JSON.parse(accesstoken) ;
+    
 
 
 const axiosInstance = axios.create({
@@ -8,6 +9,7 @@ const axiosInstance = axios.create({
   headers: {
     "Content-Type": "application/json", 
         "Authorization": `Bearer ${auth?.accessToken}`, 
+
 
   },
 });

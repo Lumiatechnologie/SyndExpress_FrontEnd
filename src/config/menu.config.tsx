@@ -54,6 +54,7 @@ import {
   Briefcase as WorkIcon,
   Zap,
 } from 'lucide-react';
+import { canModerate } from '@/lib/helpers'; 
 import { type MenuConfig } from './types';
 
 export const MENU_SIDEBAR: MenuConfig = [
@@ -319,6 +320,7 @@ export const MENU_SIDEBAR: MenuConfig = [
 
 export const MENU_SIDEBAR_CUSTOM: MenuConfig = [
   {
+  
     title: 'Store - Client',
     icon: Users,
     children: [
@@ -376,6 +378,16 @@ export const MENU_SIDEBAR_COMPACT: MenuConfig = [
     icon: LayoutGrid,
     path: '/',
   },
+  ...(canModerate()
+    ? [
+        {
+          title: 'User Management',
+          icon: UserCircle,     // ou ShieldUser si tu préfères
+          path: '/users',
+        },
+      ]
+    : []),
+
   {
     title: 'Public Profile',
     icon: UserCircle,

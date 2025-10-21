@@ -1,6 +1,6 @@
 'use client';
 
-import { JSX, useCallback } from 'react';
+import { JSX, useCallback, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { MENU_SIDEBAR } from '@/config/menu.config';
 import { MenuConfig, MenuItem } from '@/config/types';
@@ -16,35 +16,69 @@ import {
   AccordionMenuSubTrigger,
 } from '@/components/ui/accordion-menu';
 import { Badge } from '@/components/ui/badge';
+import { UserCircle } from 'lucide-react';
+
+/** Helper local : vérifie le rôle depuis localStorage */
+function isModerator(): boolean {
+  try {
+    const raw = localStorage.getItem('auth');
+    if (!raw) return false;
+    const auth = JSON.parse(raw);
+    return Array.isArray(auth?.roles) && auth.roles.includes('ROLE_MODERATOR');
+  } catch {
+    return false;
+  }
+}
 
 export function SidebarMenu() {
   const { pathname } = useLocation();
 
-  // Memoize matchPath to prevent unnecessary re-renders
+  // On prépare une copie du menu et on injecte "User Management" après le heading "User"
+  const sidebarItems: MenuConfig = useMemo(() => {
+    const items: any[] = [...MENU_SIDEBAR]; // ne pas muter la config d’origine
+
+    const userHeadingIdx = items.findIndex(
+      (it: any) => 'heading' in it && String(it.heading).toLowerCase() === 'user'
+    );
+
+    if (userHeadingIdx !== -1 && isModerator()) {
+      items.splice(userHeadingIdx + 1, 0, {
+        title: 'User Management',
+        icon: UserCircle,
+        path: '/users',
+      });
+    }
+
+    return items as MenuConfig;
+  }, []);
+
+  // Empêche les rerenders inutiles lors de la comparaison des chemins
   const matchPath = useCallback(
     (path: string): boolean =>
       path === pathname || (path.length > 1 && pathname.startsWith(path)),
     [pathname],
   );
 
-  // Global classNames for consistent styling
+  // Classes globales
   const classNames: AccordionMenuClassNames = {
     root: 'lg:ps-1 space-y-3',
     group: 'gap-px',
-    label:
-      'uppercase text-xs font-medium text-muted-foreground/70 pt-2.25 pb-px',
+    label: 'uppercase text-xs font-medium text-muted-foreground/70 pt-2.25 pb-px',
     separator: '',
-    item: 'h-8 hover:bg-transparent text-accent-foreground hover:text-primary data-[selected=true]:text-primary data-[selected=true]:bg-muted data-[selected=true]:font-medium',
+    item:
+      'h-8 hover:bg-transparent text-accent-foreground hover:text-primary ' +
+      'data-[selected=true]:text-primary data-[selected=true]:bg-muted data-[selected=true]:font-medium',
     sub: '',
     subTrigger:
-      'h-8 hover:bg-transparent text-accent-foreground hover:text-primary data-[selected=true]:text-primary data-[selected=true]:bg-muted data-[selected=true]:font-medium',
+      'h-8 hover:bg-transparent text-accent-foreground hover:text-primary ' +
+      'data-[selected=true]:text-primary data-[selected=true]:bg-muted data-[selected=true]:font-medium',
     subContent: 'py-0',
     indicator: '',
   };
 
   const buildMenu = (items: MenuConfig): JSX.Element[] => {
     return items.map((item: MenuItem, index: number) => {
-      if (item.heading) {
+      if ('heading' in item && item.heading) {
         return buildMenuHeading(item, index);
       } else if (item.disabled) {
         return buildMenuItemRootDisabled(item, index);
@@ -74,23 +108,22 @@ export function SidebarMenu() {
           </AccordionMenuSubContent>
         </AccordionMenuSub>
       );
-    } else {
-      return (
-        <AccordionMenuItem
-          key={index}
-          value={item.path || ''}
-          className="text-sm font-medium"
-        >
-          <Link
-            to={item.path || '#'}
-            className="flex items-center justify-between grow gap-2"
-          >
-            {item.icon && <item.icon data-slot="accordion-menu-icon" />}
-            <span data-slot="accordion-menu-title">{item.title}</span>
-          </Link>
-        </AccordionMenuItem>
-      );
     }
+    return (
+      <AccordionMenuItem
+        key={index}
+        value={item.path || ''}
+        className="text-sm font-medium"
+      >
+        <Link
+          to={item.path || '#'}
+          className="flex items-center justify-between grow gap-2"
+        >
+          {item.icon && <item.icon data-slot="accordion-menu-icon" />}
+          <span data-slot="accordion-menu-title">{item.title}</span>
+        </Link>
+      </AccordionMenuItem>
+    );
   };
 
   const buildMenuItemRootDisabled = (
@@ -121,9 +154,8 @@ export function SidebarMenu() {
     return items.map((item: MenuItem, index: number) => {
       if (item.disabled) {
         return buildMenuItemChildDisabled(item, index, level);
-      } else {
-        return buildMenuItemChild(item, index, level);
       }
+      return buildMenuItemChild(item, index, level);
     });
   };
 
@@ -171,17 +203,16 @@ export function SidebarMenu() {
           </AccordionMenuSubContent>
         </AccordionMenuSub>
       );
-    } else {
-      return (
-        <AccordionMenuItem
-          key={index}
-          value={item.path || ''}
-          className="text-[13px]"
-        >
-          <Link to={item.path || '#'}>{item.title}</Link>
-        </AccordionMenuItem>
-      );
     }
+    return (
+      <AccordionMenuItem
+        key={index}
+        value={item.path || ''}
+        className="text-[13px]"
+      >
+        <Link to={item.path || '#'}>{item.title}</Link>
+      </AccordionMenuItem>
+    );
   };
 
   const buildMenuItemChildDisabled = (
@@ -218,7 +249,7 @@ export function SidebarMenu() {
         collapsible
         classNames={classNames}
       >
-        {buildMenu(MENU_SIDEBAR)}
+        {buildMenu(sidebarItems)}
       </AccordionMenu>
     </div>
   );

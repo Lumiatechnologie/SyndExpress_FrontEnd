@@ -12,6 +12,7 @@ export function AppRouting() {
     transitionTime: 200,
     height: 2,
   });
+  
 
   const { verify, setLoading } = useAuth();
   const [previousLocation, setPreviousLocation] = useState('');

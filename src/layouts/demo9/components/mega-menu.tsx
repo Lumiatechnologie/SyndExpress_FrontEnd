@@ -1,30 +1,43 @@
+import { Link, NavLink, useLocation } from 'react-router-dom';
+
+import { MENU_MEGA } from '@/config/menu.config';
+import { cn } from '@/lib/utils';
+import { useMenu } from '@/hooks/use-menu';
+
+import {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink,
+} from '@/components/ui/navigation-menu';
+
 import { MegaMenuSubAccount } from '@/partials/mega-menu/mega-menu-sub-account';
 import { MegaMenuSubAuth } from '@/partials/mega-menu/mega-menu-sub-auth';
 import { MegaMenuSubNetwork } from '@/partials/mega-menu/mega-menu-sub-network';
 import { MegaMenuSubProfiles } from '@/partials/mega-menu/mega-menu-sub-profiles';
 import { MegaMenuSubStore } from '@/partials/mega-menu/mega-menu-sub-store';
-import { Link, useLocation } from 'react-router-dom';
-import { MENU_MEGA } from '@/config/menu.config';
-import { cn } from '@/lib/utils';
-import { useMenu } from '@/hooks/use-menu';
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from '@/components/ui/navigation-menu';
 
 export function MegaMenu() {
   const { pathname } = useLocation();
   const { isActive, hasActiveChild } = useMenu(pathname);
+
+  // Items issus de ta config
   const homeItem = MENU_MEGA[0];
   const publicProfilesItem = MENU_MEGA[1];
   const myAccountItem = MENU_MEGA[2];
   const networkItem = MENU_MEGA[3];
-  const storeItem = MENU_MEGA[5];
   const authItem = MENU_MEGA[4];
+  const storeItem = MENU_MEGA[5];
+
+  // Rôle modérateur
+  const raw = localStorage.getItem('auth');
+  const auth = raw ? JSON.parse(raw) : null;
+  const canModerate: boolean =
+    Array.isArray(auth?.roles) && auth.roles.includes('ROLE_MODERATOR');
+
+  // Classe bouton/onglet du menu
   const linkClass = `
     inline-flex flex-row items-center h-12 py-0 border-b border-transparent rounded-none bg-transparent -mb-[1px]
     text-sm text-secondary-foreground font-medium 
@@ -36,9 +49,9 @@ export function MegaMenu() {
   `;
 
   return (
-    <NavigationMenu>
+    <NavigationMenu className="relative z-50">
       <NavigationMenuList className="gap-2">
-        {/* Home Item */}
+        {/* Home */}
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
             <Link
@@ -51,7 +64,23 @@ export function MegaMenu() {
           </NavigationMenuLink>
         </NavigationMenuItem>
 
-        {/* Public Profiles Item */}
+        {/* User Management (Moderator only) — lien direct */}
+        {canModerate && (
+          <NavigationMenuItem className="relative z-50">
+            <NavigationMenuLink asChild>
+              <NavLink
+                to="/users"
+                end
+                className={cn(linkClass, 'relative z-50')}
+                style={{ pointerEvents: 'auto' }}
+              >
+                User Management
+              </NavLink>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+        )}
+
+        {/* Public Profiles */}
         <NavigationMenuItem>
           <NavigationMenuTrigger
             className={cn(linkClass)}
@@ -66,7 +95,7 @@ export function MegaMenu() {
           </NavigationMenuContent>
         </NavigationMenuItem>
 
-        {/* My Account Item */}
+        {/* My Account */}
         <NavigationMenuItem>
           <NavigationMenuTrigger
             className={cn(linkClass)}
@@ -79,7 +108,7 @@ export function MegaMenu() {
           </NavigationMenuContent>
         </NavigationMenuItem>
 
-        {/* Network Item */}
+        {/* Network */}
         <NavigationMenuItem>
           <NavigationMenuTrigger
             className={cn(linkClass)}
@@ -94,7 +123,7 @@ export function MegaMenu() {
           </NavigationMenuContent>
         </NavigationMenuItem>
 
-        {/* Store Item */}
+        {/* Store */}
         <NavigationMenuItem>
           <NavigationMenuTrigger
             className={cn(linkClass)}
@@ -107,7 +136,7 @@ export function MegaMenu() {
           </NavigationMenuContent>
         </NavigationMenuItem>
 
-        {/* Authentication Item */}
+        {/* Authentication */}
         <NavigationMenuItem>
           <NavigationMenuTrigger
             className={cn(linkClass)}
