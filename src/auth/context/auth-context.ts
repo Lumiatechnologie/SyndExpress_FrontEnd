@@ -28,6 +28,7 @@ export const AuthContext = createContext<{
   updateProfile: (userData: Partial<UserModel>) => Promise<UserModel>;
   logout: () => void;
   verify: () => Promise<void>;
+  DeleteAccount: (username:string) => Promise<void>;
   isAdmin: boolean;
 }>({
   loading: false,
@@ -44,6 +45,8 @@ export const AuthContext = createContext<{
   updateProfile: async () => ({}) as UserModel,
   logout: () => {},
   verify: async () => {},
+  DeleteAccount  : async () => {},
+
   isAdmin: false,
 });
 

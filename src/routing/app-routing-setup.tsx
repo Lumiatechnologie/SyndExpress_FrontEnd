@@ -102,7 +102,6 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 export function AppRoutingSetup() {
   return (
     <Routes>
-      {/* Routes protégées avec layout */}
       <Route element={<RequireAuth />}>
         <Route element={<Demo1Layout />}>
           <Route path="/" element={<DefaultPage />} />
@@ -127,14 +126,34 @@ export function AppRoutingSetup() {
           <Route path="/public-profile/campaigns/card" element={<CampaignsCardPage />} />
           <Route path="/public-profile/campaigns/list" element={<CampaignsListPage />} />
           <Route path="/public-profile/empty" element={<ProfileEmptyPage />} />
-
-          <Route path="/account/home/get-started" element={<AccountGetStartedPage />} />
-          <Route path="/account/home/user-profile" element={<AccountUserProfilePage />} />
-          <Route path="/account/home/company-profile" element={<AccountCompanyProfilePage />} />
-          <Route path="/account/home/settings-sidebar" element={<AccountSettingsSidebarPage />} />
-          <Route path="/account/home/settings-enterprise" element={<AccountSettingsEnterprisePage />} />
-          <Route path="/account/home/settings-plain" element={<AccountSettingsPlainPage />} />
-          <Route path="/account/home/settings-modal" element={<AccountSettingsModalPage />} />
+          <Route
+            path="/account/home/get-started"
+            element={<AccountGetStartedPage />}
+          />
+          <Route
+            path="/account/home/user-profile"
+            element={<AccountUserProfilePage />}
+          />
+          <Route
+            path="/account/home/company-profile"
+            element={<AccountCompanyProfilePage />}
+          />
+          <Route
+            path="/account/home/settings-sidebar"
+            element={<AccountSettingsSidebarPage />}
+          />
+          <Route
+            path="/account/home/settings-enterprise"
+            element={<AccountSettingsEnterprisePage />}
+          />
+          <Route
+            path="/account/settings"
+            element={<AccountSettingsPlainPage />}
+          />
+          <Route
+            path="/account/home/settings-modal"
+            element={<AccountSettingsModalPage />}
+          />
           <Route path="/account/billing/basic" element={<AccountBasicPage />} />
           <Route path="/account/billing/enterprise" element={<AccountEnterprisePage />} />
           <Route path="/account/billing/plans" element={<AccountPlansPage />} />
@@ -150,55 +169,138 @@ export function AppRoutingSetup() {
 
           <Route path="/account/members/team-starter" element={<AccountTeamsStarterPage />} />
           <Route path="/account/members/teams" element={<AccountTeamsPage />} />
-          <Route path="/account/members/team-info" element={<AccountTeamInfoPage />} />
-          <Route path="/account/members/members-starter" element={<AccountMembersStarterPage />} />
-          <Route path="/account/members/team-members" element={<AccountTeamMembersPage />} />
-          <Route path="/account/members/import-members" element={<AccountImportMembersPage />} />
+          <Route
+            path="/account/members/team-info"
+            element={<AccountTeamInfoPage />}
+          />
+          <Route
+            path="/account/members/members-starter"
+            element={<AccountMembersStarterPage />}
+          />
+          <Route
+            path="/account/members/team-members"
+            element={<AccountTeamMembersPage />}
+          />
+          <Route
+            path="/account/members/import-members"
+            element={<AccountImportMembersPage />}
+          />
           <Route path="/account/members/roles" element={<AccountRolesPage />} />
-          <Route path="/account/members/permissions-toggle" element={<AccountPermissionsTogglePage />} />
-          <Route path="/account/members/permissions-check" element={<AccountPermissionsCheckPage />} />
-
-          <Route path="/account/integrations" element={<AccountIntegrationsPage />} />
-          <Route path="/account/notifications" element={<AccountNotificationsPage />} />
+          <Route
+            path="/account/members/permissions-toggle"
+            element={<AccountPermissionsTogglePage />}
+          />
+          <Route
+            path="/account/members/permissions-check"
+            element={<AccountPermissionsCheckPage />}
+          />
+          <Route
+            path="/account/integrations"
+            element={<AccountIntegrationsPage />}
+          />
+          <Route
+            path="/account/notifications"
+            element={<AccountNotificationsPage />}
+          />
           <Route path="/account/api-keys" element={<AccountApiKeysPage />} />
-          <Route path="/account/appearance" element={<AccountAppearancePage />} />
-          <Route path="/account/invite-a-friend" element={<AccountInviteAFriendPage />} />
+          <Route
+            path="/account/appearance"
+            element={<AccountAppearancePage />}
+          />
+          <Route
+            path="/account/invite-a-friend"
+            element={<AccountInviteAFriendPage />}
+          />
           <Route path="/account/activity" element={<AccountActivityPage />} />
-
-          <Route path="/network/get-started" element={<NetworkGetStartedPage />} />
-          <Route path="/network/user-cards/mini-cards" element={<NetworkMiniCardsPage />} />
-          <Route path="/network/user-cards/team-crew" element={<NetworkUserCardsTeamCrewPage />} />
-          <Route path="/network/user-cards/author" element={<NetworkAuthorPage />} />
+          <Route
+            path="/network/get-started"
+            element={<NetworkGetStartedPage />}
+          />
+          <Route
+            path="/network/user-cards/mini-cards"
+            element={<NetworkMiniCardsPage />}
+          />
+          <Route
+            path="/network/user-cards/team-crew"
+            element={<NetworkUserCardsTeamCrewPage />}
+          />
+          <Route
+            path="/network/user-cards/author"
+            element={<NetworkAuthorPage />}
+          />
           <Route path="/network/user-cards/nft" element={<NetworkNFTPage />} />
-          <Route path="/network/user-cards/social" element={<NetworkSocialPage />} />
-          <Route path="/network/user-table/team-crew" element={<NetworkUserTableTeamCrewPage />} />
-          <Route path="/network/user-table/app-roster" element={<NetworkAppRosterPage />} />
-          <Route path="/network/user-table/market-authors" element={<NetworkMarketAuthorsPage />} />
-          <Route path="/network/user-table/saas-users" element={<NetworkSaasUsersPage />} />
-          <Route path="/network/user-table/store-clients" element={<NetworkStoreClientsPage />} />
-          <Route path="/network/user-table/visitors" element={<NetworkVisitorsPage />} />
-
-          <Route path="/auth/welcome-message" element={<AuthWelcomeMessagePage />} />
-          <Route path="/auth/account-deactivated" element={<AuthAccountDeactivatedPage />} />
-
+          <Route
+            path="/network/user-cards/social"
+            element={<NetworkSocialPage />}
+          />
+          <Route
+            path="/network/user-table/team-crew"
+            element={<NetworkUserTableTeamCrewPage />}
+          />
+          <Route
+            path="/network/user-table/app-roster"
+            element={<NetworkAppRosterPage />}
+          />
+          <Route
+            path="/network/user-table/market-authors"
+            element={<NetworkMarketAuthorsPage />}
+          />
+          <Route
+            path="/network/user-table/saas-users"
+            element={<NetworkSaasUsersPage />}
+          />
+          <Route
+            path="/network/user-table/store-clients"
+            element={<NetworkStoreClientsPage />}
+          />
+          <Route
+            path="/network/user-table/visitors"
+            element={<NetworkVisitorsPage />}
+          />
+          <Route
+            path="/auth/welcome-message"
+            element={<AuthWelcomeMessagePage />}
+          />
+          <Route
+            path="/auth/account-deactivated"
+            element={<AuthAccountDeactivatedPage />}
+          />
           <Route path="/store-client/home" element={<StoreClientPage />} />
-          <Route path="/store-client/search-results-grid" element={<SearchResultsGridPage />} />
-          <Route path="/store-client/search-results-list" element={<SearchResultsListPage />} />
-          <Route path="/store-client/product-details" element={<ProductDetailsPage />} />
+          <Route
+            path="/store-client/search-results-grid"
+            element={<SearchResultsGridPage />}
+          />
+          <Route
+            path="/store-client/search-results-list"
+            element={<SearchResultsListPage />}
+          />
+          <Route
+            path="/store-client/product-details"
+            element={<ProductDetailsPage />}
+          />
           <Route path="/store-client/wishlist" element={<WishlistPage />} />
-          <Route path="/store-client/checkout/order-summary" element={<OrderSummaryPage />} />
-          <Route path="/store-client/checkout/shipping-info" element={<ShippingInfoPage />} />
-          <Route path="/store-client/checkout/payment-method" element={<PaymentMethodPage />} />
-          <Route path="/store-client/checkout/order-placed" element={<OrderPlacedPage />} />
+          <Route
+            path="/store-client/checkout/order-summary"
+            element={<OrderSummaryPage />}
+          />
+          <Route
+            path="/store-client/checkout/shipping-info"
+            element={<ShippingInfoPage />}
+          />
+          <Route
+            path="/store-client/checkout/payment-method"
+            element={<PaymentMethodPage />}
+          />
+          <Route
+            path="/store-client/checkout/order-placed"
+            element={<OrderPlacedPage />}
+          />
           <Route path="/store-client/my-orders" element={<MyOrdersPage />} />
-          <Route path="/store-client/order-receipt" element={<OrderReceiptPage />} />
-
+          <Route
+            path="/store-client/order-receipt"
+            element={<OrderReceiptPage />}
+          />
           <Route path="/store-admin/dashboard" element={<DashboardPage />} />
-          <Route path="/store-admin/inventory/all-products" element={<AllProductsPage />} />
-
-          <Route path="/auth/get-started" element={<AccountGetStartedPage />} />
-
-          {/* ✅ User Management DANS le layout + RequireAuth */}
           <Route
             path="users"  // <— RELATIF
             element={
@@ -209,8 +311,6 @@ export function AppRoutingSetup() {
           />
         </Route>
       </Route>
-
-      {/* Routes publiques */}
       <Route path="error/*" element={<ErrorRouting />} />
       <Route path="auth/*" element={<AuthRouting />} />
 

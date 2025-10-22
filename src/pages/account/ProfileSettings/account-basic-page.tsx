@@ -6,19 +6,19 @@ import {
   ToolbarDescription,
   ToolbarHeading,
   ToolbarPageTitle,
-} from '@/partials/common/toolbar';
+} from '@/partials/common/toolbar.tsx';
 import { Link } from 'react-router';
-import { useSettings } from '@/providers/settings-provider';
-import { Button } from '@/components/ui/button';
-import { Container } from '@/components/common/container';
-import { AccountSettingsPlainContent } from '.';
+import { useSettings } from '@/providers/settings-provider.tsx';
+import { Button } from '@/components/ui/button.tsx';
+import { Container } from '@/components/common/container.tsx';
+import { AccountSettingsPlainContent } from './index.ts';
 
 export function AccountSettingsPlainPage() {
   const { settings } = useSettings();
 
   return (
     <Fragment>
-      <PageNavbar />
+      {/* <PageNavbar /> */}
       {settings?.layout === 'demo1' && (
         <Container>
           <Toolbar>

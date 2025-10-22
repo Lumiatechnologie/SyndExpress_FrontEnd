@@ -3,14 +3,16 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { MENU_MEGA } from '@/config/menu.config';
 import { cn } from '@/lib/utils';
 import { useMenu } from '@/hooks/use-menu';
-
 import {
   NavigationMenu,
   NavigationMenuList,
   NavigationMenuItem,
   NavigationMenuTrigger,
   NavigationMenuContent,
+  NavigationMenuItem,
   NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
 
 import { MegaMenuSubAccount } from '@/partials/mega-menu/mega-menu-sub-account';
@@ -95,7 +97,7 @@ export function MegaMenu() {
           </NavigationMenuContent>
         </NavigationMenuItem>
 
-        {/* My Account */}
+        {/* My Account Item */}
         <NavigationMenuItem>
           <NavigationMenuTrigger
             className={cn(linkClass)}
@@ -108,7 +110,7 @@ export function MegaMenu() {
           </NavigationMenuContent>
         </NavigationMenuItem>
 
-        {/* Network */}
+        {/* Network Item */}
         <NavigationMenuItem>
           <NavigationMenuTrigger
             className={cn(linkClass)}
@@ -123,7 +125,7 @@ export function MegaMenu() {
           </NavigationMenuContent>
         </NavigationMenuItem>
 
-        {/* Store */}
+        {/* Store Item */}
         <NavigationMenuItem>
           <NavigationMenuTrigger
             className={cn(linkClass)}
@@ -136,7 +138,7 @@ export function MegaMenu() {
           </NavigationMenuContent>
         </NavigationMenuItem>
 
-        {/* Authentication */}
+        {/* Authentication Item */}
         <NavigationMenuItem>
           <NavigationMenuTrigger
             className={cn(linkClass)}

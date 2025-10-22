@@ -1,10 +1,23 @@
-import { Link } from 'react-router';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Label } from '@/components/ui/label';
+import { useAuth } from '@/auth/context/auth-context';
+import { useState } from 'react';
+
 
 const DeleteAccount = () => {
+  const { DeleteAccount, user } = useAuth();
+  const [DialogOpen, setDialogOpen] = useState<boolean | false>(false);
+  const username = user?.username;
+  const handleDeleteAccount = async () => {
+    await DeleteAccount(username ?? '');
+    setDialogOpen(true);
+  }
+
+  
+ 
+
+
+
   return (
     <Card>
       <CardHeader id="delete_account">
@@ -15,23 +28,14 @@ const DeleteAccount = () => {
           <div className="text-sm text-foreground">
             We regret to see you leave. Confirm account deletion below. Your
             data will be permanently removed. Thank you for being part of our
-            community. Please check our{' '}
-            <Button mode="link" asChild>
-              <Link to="#">Setup Guidelines</Link>
-            </Button>{' '}
-            if you still wish continue.
+            community. 
           </div>
-          <div className="flex items-center space-x-2">
-            <Checkbox />
-            <Label>Confirm deleting account</Label>
-          </div>
+         
         </div>
         <div className="flex justify-end gap-2.5">
-          <Button variant="outline">
-            <Link to="#">Deactivate Instead</Link>
-          </Button>
+          
           <Button variant="destructive">
-            <Link to="#">Delete Account</Link>
+            <div onClick={handleDeleteAccount}>Delete Account</div>
           </Button>
         </div>
       </CardContent>

@@ -17,7 +17,7 @@ export function DropdownMenu5({ trigger }: { trigger: ReactNode }) {
       <DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger>
       <DropdownMenuContent className="w-[150px]" side="bottom" align="end">
         <DropdownMenuItem asChild>
-          <Link to="/account/home/settings-plain">
+          <Link to="/account/settings">
             <FilePlus />
             <span>Add</span>
           </Link>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AuthContext } from './auth-context';
 import { AuthModel, UserModel } from '@/auth/lib/models';
 import axiosInstance from '../api/axios';
@@ -15,12 +15,25 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (authData) {
       localStorage.setItem('auth', JSON.stringify(authData));
       setAuth(authData)
-     
+      setUser(user);  
     } else {
       localStorage.removeItem('auth');
       setAuth(undefined);
     }
   };
+  const UserRefresh = async () => {
+    const data = localStorage.getItem('auth');
+    if (data) {
+      const authData = JSON.parse(data) as AuthModel;
+      saveAuth(authData);
+      setUser(authData);
+    }
+  }
+
+  // Refresh user data when component mounts
+  useEffect(() => {
+    UserRefresh();
+  }, []);
 
   const login = async (username: string, password: string) => {
     setLoading(true);
@@ -48,13 +61,29 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
          {
       }
       );
-         console.log('Password update response:', response.data);
+       return response;
+    } catch (error: any) {
+      throw new Error(error || 'Password update failed');
+    }
+  };
+  const DeleteAccount = async (username:string) => {
+    
+    try {
+      const response = await axiosInstance.delete(`/api/auth/delete/${username}`,
+      );
+         console.log('Delete account response:', response.data);
          return response.data;
     } catch (error: any) {
-      throw new Error(error?.response?.data?.message || 'Password update failed');
-    } finally {
-      setLoading(false);
-    }
+    const message =
+      error.response?.data?.replace("Error: ", "") ||
+      "Password update failed";
+      console.log("❌ Backend error:", error.response?.data);
+      console.log("❌ Backend error:", error.response?.data.message);
+
+
+    throw new Error(message);
+  }
+
   };
 
  
@@ -80,6 +109,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         updateProfile: async () => ({} as UserModel),
         logout,
         verify: async () => {},
+        DeleteAccount,
         isAdmin,
       }}
     >

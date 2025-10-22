@@ -1,26 +1,26 @@
 import { useState } from 'react';
-import { AvatarInput } from '@/partials/common/avatar-input';
+import { AvatarInput } from '@/partials/common/avatar-input.tsx';
 import { format } from 'date-fns';
 import { CalendarDays } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
-import { Calendar } from '@/components/ui/calendar';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { cn } from '@/lib/utils.ts';
+import { Button } from '@/components/ui/button.tsx';
+import { Calendar } from '@/components/ui/calendar.tsx';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card.tsx';
+import { Input } from '@/components/ui/input.tsx';
+import { Label } from '@/components/ui/label.tsx';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover';
+} from '@/components/ui/popover.tsx';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
-import { Switch } from '@/components/ui/switch';
+} from '@/components/ui/select.tsx';
+import { Switch } from '@/components/ui/switch.tsx';
 
 interface IGeneralSettingsProps {
   title: string;

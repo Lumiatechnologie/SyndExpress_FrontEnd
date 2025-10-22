@@ -1,4 +1,4 @@
-import { DeleteAccount } from '../settings-sidebar';
+import { DeleteAccount } from '../home/settings-sidebar';
 import { BasicSettings, Password } from './components';
 
 export function AccountSettingsPlainContent() {
