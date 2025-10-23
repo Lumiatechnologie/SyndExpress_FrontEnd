@@ -88,610 +88,38 @@ interface IStatus {
 }
 
 interface IData {
-  id: string;
-  member: IMember;
-  roles: string[];
-  location: ILocation;
-  status: IStatus;
-  recentlyActivity: string;
+  Code: string;
+  MoisAnnée: string;
+  Montant: number;
+  CotisationID: string;
+  Utilisateur: string;
+  Matricule: string;
+  RecapCode:string;
 }
 
 const data: IData[] = [
-  {
-    id: '1',
-    member: {
-      avatar: '300-3.png',
-      name: 'Tyler Hero',
-      tasks: '26',
-    },
-    roles: ['Admin', 'Support', 'Editor'],
-    location: {
-      name: 'Estonia',
-      flag: 'estonia.svg',
-    },
-    status: {
-      label: 'Active',
-      variant: 'success',
-    },
-    recentlyActivity: 'Current session',
-  },
-  {
-    id: '2',
-    member: {
-      avatar: '300-2.png',
-      name: 'Esther Howard',
-      tasks: '639',
-    },
-    roles: ['Chat', 'Tester'],
-    location: {
-      name: 'Malaysia',
-      flag: 'malaysia.svg',
-    },
-    status: {
-      label: 'Pending',
-      variant: 'warning',
-    },
-    recentlyActivity: '-',
-  },
-  {
-    id: '3',
-    member: {
-      avatar: '300-11.png',
-      name: 'Jacob Jones',
-      tasks: '125',
-    },
-    roles: ['Visitor', 'Developer'],
-    location: {
-      name: 'Ukraine',
-      flag: 'ukraine.svg',
-    },
-    status: {
-      label: 'Active',
-      variant: 'primary',
-    },
-    recentlyActivity: 'Today, 9:53 am',
-  },
-  {
-    id: '4',
-    member: {
-      avatar: '300-2.png',
-      name: 'Cody Fisher',
-      tasks: '81',
-    },
-    roles: ['Designer', 'Analyst'],
-    location: {
-      name: 'Canada',
-      flag: 'canada.svg',
-    },
-    status: {
-      label: 'Deleted',
-      variant: 'destructive',
-    },
-    recentlyActivity: 'Current session',
-  },
-  {
-    id: '5',
-    member: {
-      avatar: '300-5.png',
-      name: 'Leslie Alexander',
-      tasks: '203',
-    },
-    roles: ['Admin', 'Chat', 'Scrum Master'],
-    location: {
-      name: 'India',
-      flag: 'india.svg',
-    },
-    status: {
-      label: 'Active',
-      variant: 'success',
-    },
-    recentlyActivity: 'Month ago',
-  },
-  {
-    id: '6',
-    member: {
-      avatar: '300-6.png',
-      name: 'Brooklyn Simmons',
-      tasks: '45',
-    },
-    roles: ['Support', 'Developer'],
-    location: {
-      name: 'Spain',
-      flag: 'spain.svg',
-    },
-    status: {
-      label: 'Active',
-      variant: 'success',
-    },
-    recentlyActivity: 'Today, 3:45 pm',
-  },
-  {
-    id: '7',
-    member: {
-      avatar: '300-7.png',
-      name: 'Darlene Robertson',
-      tasks: '108',
-    },
-    roles: ['Editor', 'Tester'],
-    location: {
-      name: 'Germany',
-      flag: 'germany.svg',
-    },
-    status: {
-      label: 'Pending',
-      variant: 'warning',
-    },
-    recentlyActivity: '2 days ago',
-  },
-  {
-    id: '8',
-    member: {
-      avatar: '300-8.png',
-      name: 'Jerome Bell',
-      tasks: '91',
-    },
-    roles: ['Admin', 'Scrum Master'],
-    location: {
-      name: 'France',
-      flag: 'france.svg',
-    },
-    status: {
-      label: 'Active',
-      variant: 'success',
-    },
-    recentlyActivity: 'Week ago',
-  },
-  {
-    id: '9',
-    member: {
-      avatar: '300-9.png',
-      name: 'Devon Lane',
-      tasks: '56',
-    },
-    roles: ['Developer', 'Support'],
-    location: {
-      name: 'Japan',
-      flag: 'japan.svg',
-    },
-    status: {
-      label: 'Deleted',
-      variant: 'destructive',
-    },
-    recentlyActivity: 'Today, 11:00 am',
-  },
-  {
-    id: '10',
-    member: {
-      avatar: '300-10.png',
-      name: 'Jane Cooper',
-      tasks: '47',
-    },
-    roles: ['Designer', 'Admin'],
-    location: {
-      name: 'South Korea',
-      flag: 'south-korea.svg',
-    },
-    status: {
-      label: 'Active',
-      variant: 'success',
-    },
-    recentlyActivity: '3 days ago',
-  },
-  {
-    id: '11',
-    member: {
-      avatar: '300-12.png',
-      name: 'Ronald Richards',
-      tasks: '64',
-    },
-    roles: ['Support', 'Chat'],
-    location: {
-      name: 'Brazil',
-      flag: 'brazil.svg',
-    },
-    status: {
-      label: 'Pending',
-      variant: 'warning',
-    },
-    recentlyActivity: 'Month ago',
-  },
-  {
-    id: '12',
-    member: {
-      avatar: '300-13.png',
-      name: 'Kathryn Murphy',
-      tasks: '78',
-    },
-    roles: ['Tester', 'Scrum Master'],
-    location: {
-      name: 'United Kingdom',
-      flag: 'united-kingdom.svg',
-    },
-    status: {
-      label: 'Active',
-      variant: 'success',
-    },
-    recentlyActivity: 'Today, 10:30 am',
-  },
-  {
-    id: '13',
-    member: {
-      avatar: '300-14.png',
-      name: 'Jacob Smith',
-      tasks: '92',
-    },
-    roles: ['Admin', 'Support'],
-    location: {
-      name: 'Australia',
-      flag: 'australia.svg',
-    },
-    status: {
-      label: 'Pending',
-      variant: 'warning',
-    },
-    recentlyActivity: 'Week ago',
-  },
-  {
-    id: '14',
-    member: {
-      avatar: '300-15.png',
-      name: 'Kristin Watson',
-      tasks: '102',
-    },
-    roles: ['Designer', 'Visitor'],
-    location: {
-      name: 'Italy',
-      flag: 'italy.svg',
-    },
-    status: {
-      label: 'Active',
-      variant: 'success',
-    },
-    recentlyActivity: 'Today, 8:00 am',
-  },
-  {
-    id: '15',
-    member: {
-      avatar: '300-16.png',
-      name: 'Cameron Williamson',
-      tasks: '58',
-    },
-    roles: ['Editor', 'Analyst'],
-    location: {
-      name: 'Russia',
-      flag: 'russia.svg',
-    },
-    status: {
-      label: 'Deleted',
-      variant: 'destructive',
-    },
-    recentlyActivity: '2 days ago',
-  },
-  {
-    id: '16',
-    member: {
-      avatar: '300-17.png',
-      name: 'Courtney Henry',
-      tasks: '75',
-    },
-    roles: ['Support', 'Chat'],
-    location: {
-      name: 'India',
-      flag: 'india.svg',
-    },
-    status: {
-      label: 'Active',
-      variant: 'success',
-    },
-    recentlyActivity: 'Month ago',
-  },
-  {
-    id: '17',
-    member: {
-      avatar: '300-18.png',
-      name: 'Ralph Edwards',
-      tasks: '109',
-    },
-    roles: ['Admin', 'Scrum Master'],
-    location: {
-      name: 'Spain',
-      flag: 'spain.svg',
-    },
-    status: {
-      label: 'Pending',
-      variant: 'warning',
-    },
-    recentlyActivity: 'Week ago',
-  },
-  {
-    id: '18',
-    member: {
-      avatar: '300-19.png',
-      name: 'Arlene McCoy',
-      tasks: '84',
-    },
-    roles: ['Developer', 'Tester'],
-    location: {
-      name: 'Canada',
-      flag: 'canada.svg',
-    },
-    status: {
-      label: 'Deleted',
-      variant: 'destructive',
-    },
-    recentlyActivity: 'Today, 1:00 pm',
-  },
-  {
-    id: '19',
-    member: {
-      avatar: '300-20.png',
-      name: 'Theresa Webb',
-      tasks: '56',
-    },
-    roles: ['Designer', 'Analyst'],
-    location: {
-      name: 'Malaysia',
-      flag: 'malaysia.svg',
-    },
-    status: {
-      label: 'Active',
-      variant: 'success',
-    },
-    recentlyActivity: 'Week ago',
-  },
-  {
-    id: '20',
-    member: {
-      avatar: '300-21.png',
-      name: 'Guy Hawkins',
-      tasks: '68',
-    },
-    roles: ['Admin', 'Support'],
-    location: {
-      name: 'Estonia',
-      flag: 'estonia.svg',
-    },
-    status: {
-      label: 'Pending',
-      variant: 'warning',
-    },
-    recentlyActivity: 'Today, 3:00 pm',
-  },
-  {
-    id: '21',
-    member: {
-      avatar: '300-22.png',
-      name: 'Floyd Miles',
-      tasks: '43',
-    },
-    roles: ['Chat', 'Tester'],
-    location: {
-      name: 'Ukraine',
-      flag: 'ukraine.svg',
-    },
-    status: {
-      label: 'Active',
-      variant: 'success',
-    },
-    recentlyActivity: 'Today, 11:45 am',
-  },
-  {
-    id: '22',
-    member: {
-      avatar: '300-23.png',
-      name: 'Devon Lane',
-      tasks: '91',
-    },
-    roles: ['Visitor', 'Developer'],
-    location: {
-      name: 'India',
-      flag: 'india.svg',
-    },
-    status: {
-      label: 'Deleted',
-      variant: 'destructive',
-    },
-    recentlyActivity: 'Month ago',
-  },
-  {
-    id: '23',
-    member: {
-      avatar: '300-24.png',
-      name: 'Ronald Richards',
-      tasks: '78',
-    },
-    roles: ['Designer', 'Analyst'],
-    location: {
-      name: 'France',
-      flag: 'france.svg',
-    },
-    status: {
-      label: 'Active',
-      variant: 'success',
-    },
-    recentlyActivity: 'Week ago',
-  },
-  {
-    id: '24',
-    member: {
-      avatar: '300-25.png',
-      name: 'Kathryn Murphy',
-      tasks: '85',
-    },
-    roles: ['Admin', 'Scrum Master'],
-    location: {
-      name: 'Japan',
-      flag: 'japan.svg',
-    },
-    status: {
-      label: 'Pending',
-      variant: 'warning',
-    },
-    recentlyActivity: 'Today, 4:00 pm',
-  },
-  {
-    id: '25',
-    member: {
-      avatar: '300-26.png',
-      name: 'Jacob Smith',
-      tasks: '92',
-    },
-    roles: ['Support', 'Developer'],
-    location: {
-      name: 'South Korea',
-      flag: 'south-korea.svg',
-    },
-    status: {
-      label: 'Deleted',
-      variant: 'destructive',
-    },
-    recentlyActivity: 'Week ago',
-  },
-  {
-    id: '26',
-    member: {
-      avatar: '300-27.png',
-      name: 'Kristin Watson',
-      tasks: '102',
-    },
-    roles: ['Chat', 'Visitor'],
-    location: {
-      name: 'Italy',
-      flag: 'italy.svg',
-    },
-    status: {
-      label: 'Active',
-      variant: 'success',
-    },
-    recentlyActivity: 'Today, 8:00 am',
-  },
-  {
-    id: '27',
-    member: {
-      avatar: '300-28.png',
-      name: 'Cameron Williamson',
-      tasks: '58',
-    },
-    roles: ['Admin', 'Analyst'],
-    location: {
-      name: 'Russia',
-      flag: 'russia.svg',
-    },
-    status: {
-      label: 'Pending',
-      variant: 'warning',
-    },
-    recentlyActivity: '2 days ago',
-  },
-  {
-    id: '28',
-    member: {
-      avatar: '300-29.png',
-      name: 'Courtney Henry',
-      tasks: '75',
-    },
-    roles: ['Designer', 'Support'],
-    location: {
-      name: 'Spain',
-      flag: 'spain.svg',
-    },
-    status: {
-      label: 'Active',
-      variant: 'success',
-    },
-    recentlyActivity: 'Month ago',
-  },
-  {
-    id: '29',
-    member: {
-      avatar: '300-30.png',
-      name: 'Ralph Edwards',
-      tasks: '109',
-    },
-    roles: ['Admin', 'Scrum Master'],
-    location: {
-      name: 'Canada',
-      flag: 'canada.svg',
-    },
-    status: {
-      label: 'Deleted',
-      variant: 'destructive',
-    },
-    recentlyActivity: 'Week ago',
-  },
-  {
-    id: '30',
-    member: {
-      avatar: '300-31.png',
-      name: 'Arlene McCoy',
-      tasks: '84',
-    },
-    roles: ['Support', 'Developer'],
-    location: {
-      name: 'Malaysia',
-      flag: 'malaysia.svg',
-    },
-    status: {
-      label: 'Active',
-      variant: 'success',
-    },
-    recentlyActivity: 'Today, 1:00 pm',
-  },
-  {
-    id: '31',
-    member: {
-      avatar: '300-32.png',
-      name: 'Theresa Webb',
-      tasks: '56',
-    },
-    roles: ['Designer', 'Analyst'],
-    location: {
-      name: 'Estonia',
-      flag: 'estonia.svg',
-    },
-    status: {
-      label: 'Pending',
-      variant: 'warning',
-    },
-    recentlyActivity: 'Week ago',
-  },
-  {
-    id: '32',
-    member: {
-      avatar: '300-33.png',
-      name: '',
-      tasks: '68',
-    },
-    roles: ['Admin', 'Scrum Master'],
-    location: {
-      name: 'Ukraine',
-      flag: 'ukraine.svg',
-    },
-    status: {
-      label: 'Deleted',
-      variant: 'destructive',
-    },
-    recentlyActivity: 'Today, 3:00 pm',
-  },
-  {
-    id: '33',
-    member: {
-      avatar: '300-34.png',
-      name: 'Floyd Miles',
-      tasks: '43',
-    },
-    roles: ['Support', 'Visitor'],
-    location: {
-      name: 'India',
-      flag: 'india.svg',
-    },
-    status: {
-      label: 'Active',
-      variant: 'success',
-    },
-    recentlyActivity: 'Today, 11:45 am',
-  },
+  { "Code": "CT001", "MoisAnnée": "04/2025", "Montant": 100, "CotisationID": "ID789", "Utilisateur": "Ali Benali", "Matricule": "MAT123", "RecapCode": "RC987" },
+  { "Code": "CT002", "MoisAnnée": "04/2025", "Montant": 120, "CotisationID": "ID790", "Utilisateur": "Sara Lahlou", "Matricule": "MAT124", "RecapCode": "RC988" },
+  { "Code": "CT003", "MoisAnnée": "04/2025", "Montant": 110, "CotisationID": "ID791", "Utilisateur": "Omar Fassi", "Matricule": "MAT125", "RecapCode": "RC989" },
+  { "Code": "CT004", "MoisAnnée": "04/2025", "Montant": 90, "CotisationID": "ID792", "Utilisateur": "Nadia Bennis", "Matricule": "MAT126", "RecapCode": "RC990" },
+  { "Code": "CT005", "MoisAnnée": "04/2025", "Montant": 130, "CotisationID": "ID793", "Utilisateur": "Youssef Idrissi", "Matricule": "MAT127", "RecapCode": "RC991" },
+  { "Code": "CT006", "MoisAnnée": "04/2025", "Montant": 95, "CotisationID": "ID794", "Utilisateur": "Laila Hammou", "Matricule": "MAT128", "RecapCode": "RC992" },
+  { "Code": "CT007", "MoisAnnée": "04/2025", "Montant": 105, "CotisationID": "ID795", "Utilisateur": "Karim Saidi", "Matricule": "MAT129", "RecapCode": "RC993" },
+  { "Code": "CT008", "MoisAnnée": "04/2025", "Montant": 115, "CotisationID": "ID796", "Utilisateur": "Fatima Zahra", "Matricule": "MAT130", "RecapCode": "RC994" },
+  { "Code": "CT009", "MoisAnnée": "04/2025", "Montant": 125, "CotisationID": "ID797", "Utilisateur": "Hassan El Khattabi", "Matricule": "MAT131", "RecapCode": "RC995" },
+  { "Code": "CT010", "MoisAnnée": "04/2025", "Montant": 140, "CotisationID": "ID798", "Utilisateur": "Salma Raji", "Matricule": "MAT132", "RecapCode": "RC996" },
+  { "Code": "CT011", "MoisAnnée": "04/2025", "Montant": 100, "CotisationID": "ID799", "Utilisateur": "Amine Benjelloun", "Matricule": "MAT133", "RecapCode": "RC997" },
+  { "Code": "CT012", "MoisAnnée": "04/2025", "Montant": 110, "CotisationID": "ID800", "Utilisateur": "Imane Chafai", "Matricule": "MAT134", "RecapCode": "RC998" },
+  { "Code": "CT013", "MoisAnnée": "04/2025", "Montant": 95, "CotisationID": "ID801", "Utilisateur": "Rachid Fadil", "Matricule": "MAT135", "RecapCode": "RC999" },
+  { "Code": "CT014", "MoisAnnée": "04/2025", "Montant": 120, "CotisationID": "ID802", "Utilisateur": "Sofia El Amrani", "Matricule": "MAT136", "RecapCode": "RC1000" },
+  { "Code": "CT015", "MoisAnnée": "04/2025", "Montant": 130, "CotisationID": "ID803", "Utilisateur": "Mounir Kabbaj", "Matricule": "MAT137", "RecapCode": "RC1001" },
+  { "Code": "CT016", "MoisAnnée": "04/2025", "Montant": 105, "CotisationID": "ID804", "Utilisateur": "Aya El Ghazali", "Matricule": "MAT138", "RecapCode": "RC1002" },
+  { "Code": "CT017", "MoisAnnée": "04/2025", "Montant": 115, "CotisationID": "ID805", "Utilisateur": "Yassin Lahlou", "Matricule": "MAT139", "RecapCode": "RC1003" },
+  { "Code": "CT018", "MoisAnnée": "04/2025", "Montant": 125, "CotisationID": "ID806", "Utilisateur": "Nora Benkirane", "Matricule": "MAT140", "RecapCode": "RC1004" },
+  { "Code": "CT019", "MoisAnnée": "04/2025", "Montant": 135, "CotisationID": "ID807", "Utilisateur": "Hicham Bouziane", "Matricule": "MAT141", "RecapCode": "RC1005" },
+  { "Code": "CT020", "MoisAnnée": "04/2025", "Montant": 140, "CotisationID": "ID808", "Utilisateur": "Lina Rachid", "Matricule": "MAT142", "RecapCode": "RC1006" }
 ];
+
 
 function ActionsCell({ row }: { row: Row<IData> }) {
   const { copyToClipboard } = useCopyToClipboard();
@@ -751,26 +179,25 @@ const Members = () => {
   const filteredData = useMemo(() => {
     return data.filter((item) => {
       // Filter by status
-      const matchesStatus =
+     /* const matchesStatus =
         !selectedStatuses?.length ||
-        selectedStatuses.includes(item.status.label);
+        selectedStatuses.includes(item.status.label);*/
 
       // Filter by search query (case-insensitive)
       const searchLower = searchQuery.toLowerCase();
       const matchesSearch =
         !searchQuery ||
-        item.member.name.toLowerCase().includes(searchLower) ||
-        item.member.tasks.toLowerCase().includes(searchLower) ||
-        item.location.name.toLowerCase().includes(searchLower);
+        item.Matricule.toLowerCase().includes(searchLower) ||
+        item.Utilisateur.toLowerCase().includes(searchLower) ||
+        item.RecapCode.toLowerCase().includes(searchLower);
 
-      return matchesStatus && matchesSearch;
+      return   matchesSearch;
     });
   }, [searchQuery, selectedStatuses]);
-
   const statusCounts = useMemo(() => {
     return data.reduce(
       (acc, item) => {
-        acc[item.status.label] = (acc[item.status.label] || 0) + 1;
+        acc[item.CotisationID] = (acc[item.CotisationID] || 0) + 1;
         return acc;
       },
       {} as Record<string, number>,
@@ -786,8 +213,8 @@ const Members = () => {
   const columns = useMemo<ColumnDef<IData>[]>(
     () => [
       {
-        accessorKey: 'id',
-        accessorFn: (row) => row.id,
+        accessorKey: 'CotisationID',
+        accessorFn: (row) => row.CotisationID,
         header: () => <DataGridTableRowSelectAll />,
         cell: ({ row }) => <DataGridTableRowSelect row={row} />,
         enableSorting: false,
@@ -799,30 +226,17 @@ const Members = () => {
         },
       },
       {
-        id: 'member',
-        accessorFn: (row) => row.member,
+        id: 'CotisationID',
+        accessorFn: (row) => row.CotisationID,
         header: ({ column }) => (
-          <DataGridColumnHeader title="Member" column={column} />
+          <DataGridColumnHeader title="CotisationID" column={column} />
         ),
         cell: ({ row }) => (
-          <div className="flex items-center gap-2.5">
-            <div className="shrink-0">
-              <img
-                src={toAbsoluteUrl(
-                  `/media/avatars/${row.original.member.avatar}`,
-                )}
-                className="h-9 rounded-full"
-                alt="image"
-              />
-            </div>
-            <div className="flex flex-col gap-0.5">
-              <span className="leading-none font-medium text-sm text-mono hover:text-primary">
-                {row.original.member.name || '-'}
-              </span>
-              <span className="text-sm text-secondary-foreground font-normal">
-                {row.original.member.tasks} tasks
-              </span>
-            </div>
+          <div className="flex items-center gap-1.5">
+
+            <span className="leading-none text-foreground font-normal">
+              {row.original.CotisationID}
+            </span>
           </div>
         ),
         enableSorting: true,
@@ -832,18 +246,17 @@ const Members = () => {
         },
       },
       {
-        id: 'roles',
-        accessorFn: (row) => row.roles,
+        id: 'RecapCode',
+        accessorFn: (row) => row.RecapCode,
         header: ({ column }) => (
-          <DataGridColumnHeader title="Roles" column={column} />
+          <DataGridColumnHeader title="RecapCode" column={column} />
         ),
         cell: ({ row }) => (
-          <div className="flex flex-wrap gap-2.5 mb-2">
-            {row.original.roles.map((role: string, index: number) => (
-              <Badge key={index} variant="secondary" appearance="outline">
-                {role}
-              </Badge>
-            ))}
+          <div className="flex items-center gap-1.5">
+
+            <span className="leading-none text-foreground font-normal">
+              {row.original.CotisationID}
+            </span>
           </div>
         ),
         enableSorting: true,
@@ -853,20 +266,16 @@ const Members = () => {
         },
       },
       {
-        id: 'location',
-        accessorFn: (row) => row.location,
+        id: 'MoisAnnée',
+        accessorFn: (row) => row.MoisAnnée,
         header: ({ column }) => (
-          <DataGridColumnHeader title="location" column={column} />
+          <DataGridColumnHeader title="MoisAnnée" column={column} />
         ),
         cell: ({ row }) => (
           <div className="flex items-center gap-1.5">
-            <img
-              src={toAbsoluteUrl(`/media/flags/${row.original.location.flag}`)}
-              className="h-4 rounded-full"
-              alt="image"
-            />
+
             <span className="leading-none text-foreground font-normal">
-              {row.original.location.name}
+              {row.original.MoisAnnée}
             </span>
           </div>
         ),
@@ -877,15 +286,18 @@ const Members = () => {
         },
       },
       {
-        id: 'status',
-        accessorFn: (row) => row.status,
+        id: 'Montant',
+        accessorFn: (row) => row.Montant,
         header: ({ column }) => (
-          <DataGridColumnHeader title="Status" column={column} />
+          <DataGridColumnHeader title="Montant" column={column} />
         ),
         cell: ({ row }) => (
-          <Badge variant={row.original.status.variant} appearance="outline">
-            {row.original.status.label}
-          </Badge>
+          <div className="flex items-center gap-1.5">
+
+            <span className="leading-none text-foreground font-normal">
+              {row.original.Montant}
+            </span>
+          </div>
         ),
         enableSorting: true,
         size: 165,
@@ -894,14 +306,14 @@ const Members = () => {
         },
       },
       {
-        id: 'recentlyActivity',
-        accessorFn: (row) => row.recentlyActivity,
+        id: 'Code',
+        accessorFn: (row) => row.Code,
         header: ({ column }) => (
-          <DataGridColumnHeader title="Recent Activity" column={column} />
+          <DataGridColumnHeader title="Code" column={column} />
         ),
         cell: ({ row }) => (
           <span className="text-secondary-foreground font-normal">
-            {row.original.recentlyActivity}
+            {row.original.Code}
           </span>
         ),
         enableSorting: true,
@@ -928,7 +340,7 @@ const Members = () => {
     columns,
     data: filteredData,
     pageCount: Math.ceil((filteredData?.length || 0) / pagination.pageSize),
-    getRowId: (row: IData) => row.id,
+    getRowId: (row: IData) => row.CotisationID,
     state: {
       pagination,
       sorting,
@@ -946,16 +358,7 @@ const Members = () => {
 
     return (
       <CardToolbar>
-        <div className="flex flex-wrap items-center gap-2.5">
-          <Label htmlFor="auto-update" className="text-sm">
-            Active Users
-          </Label>
-          <Switch size="sm" id="auto-update" defaultChecked />
-          <Button>
-            <UserRoundPlus />
-            Add New
-          </Button>
-        </div>
+
         <DataGridColumnVisibility
           table={table}
           trigger={
