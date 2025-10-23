@@ -1,4 +1,3 @@
-// src/pages/users/UserManagement.tsx
 import React, { useEffect, useMemo, useState } from 'react';
 import axiosInstance from '../../auth/api/axios';
 
@@ -7,9 +6,9 @@ type UserDto = {
   id?: number;
   username?: string;
   email?: string;
-  roles?: unknown;              // <- on accepte n'importe quel format
+  roles?: unknown;          // format flexible
   matricule?: string;
-  startActivity?: string;       // yyyy-mm-dd
+  startActivity?: string;   // yyyy-mm-dd
 };
 
 // ---------- Helpers rôles robustes ----------
@@ -25,10 +24,10 @@ function toRoleString(r: unknown): string {
 function normalizeRole(roles?: unknown): string[] {
   const arr: unknown[] = Array.isArray(roles) ? roles : roles != null ? [roles] : [];
   return arr
-    .map((it) => toRoleString(it))           // assure string
-    .filter((s): s is string => Boolean(s))  // supprime vide/null
-    .map((s) => s.replace(/^ROLE_/, ''))     // enlève préfixe
-    .map((s) => s.toUpperCase());            // homogénéise
+    .map((it) => toRoleString(it))
+    .filter((s): s is string => Boolean(s))
+    .map((s) => s.replace(/^ROLE_/, ''))
+    .map((s) => s.toUpperCase());
 }
 
 function mapRoles(value: 'user' | 'moderator'): string[] {
@@ -37,10 +36,10 @@ function mapRoles(value: 'user' | 'moderator'): string[] {
 
 // ---------- API ----------
 const API = {
-  list: '/api/user/getUsers',                 // GET
-  add: '/api/auth/add-user',                  // POST
-  update: '/api/user/update-user',            // PUT (id dans le body)
-  remove: (id: number | string) => `/api/user/delete/${id}`, // DELETE
+  list: '/api/auth/users',
+  add: '/api/auth/add-user',
+  update: '/api/auth/update-user',
+  remove: (username: string) => `/api/auth/delete/${encodeURIComponent(username)}`,
 };
 
 // ---------- Page ----------
@@ -79,7 +78,7 @@ const UserManagement: React.FC = () => {
       setError(null);
       const res = await axiosInstance.get(API.list);
 
-      // Le backend peut renvoyer {content: [...]} (pagination Spring) ou directement [...]
+      // backend peut renvoyer {content: [...]} (Page Spring) ou [...]
       const list: UserDto[] = Array.isArray(res.data)
         ? res.data
         : Array.isArray(res.data?.content)
@@ -153,12 +152,20 @@ const UserManagement: React.FC = () => {
     }
   }
 
-  async function remove(id?: number) {
-    if (!id) return;
-    if (!confirm('Supprimer cet utilisateur ?')) return;
+  // --- suppression par username ---
+  async function removeUser(u?: UserDto) {
+    const username = u?.username?.trim();
+    if (!username) return;
+    if (!confirm(`Supprimer l’utilisateur « ${username} » ?`)) return;
+
     try {
       setLoading(true);
-      await axiosInstance.delete(API.remove(id));
+      setError(null);
+
+      await axiosInstance.delete(API.remove(username));
+
+      // Optimiste: retire localement puis rafraîchis
+      setUsers((prev) => prev.filter((x) => x.username !== username));
       await fetchUsers();
     } catch (e: any) {
       console.error(e);
@@ -167,6 +174,7 @@ const UserManagement: React.FC = () => {
       setLoading(false);
     }
   }
+
 
   return (
     <div className="p-6 space-y-6">
@@ -229,7 +237,7 @@ const UserManagement: React.FC = () => {
                         <button onClick={() => openEdit(u)} className="px-3 py-1 rounded-lg border">
                           Modifier
                         </button>
-                        <button onClick={() => remove(u.id)} className="px-3 py-1 rounded-lg border">
+                        <button onClick={() => removeUser(u)} className="px-3 py-1 rounded-lg border">
                           Supprimer
                         </button>
                       </div>
