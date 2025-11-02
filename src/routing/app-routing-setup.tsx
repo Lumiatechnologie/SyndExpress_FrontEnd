@@ -38,7 +38,6 @@ import {
   AccountTeamInfoPage,
   AccountTeamMembersPage,
   AccountTeamsPage,
-  AccountTeamsStarterPage,
   AccountUserProfilePage,
 } from '@/pages/account';
 import {
@@ -146,10 +145,7 @@ export function AppRoutingSetup() {
             path="/account/home/settings-enterprise"
             element={<AccountSettingsEnterprisePage />}
           />
-          <Route
-            path="/account/settings"
-            element={<AccountSettingsPlainPage />}
-          />
+
           <Route
             path="/account/home/settings-modal"
             element={<AccountSettingsModalPage />}
@@ -167,7 +163,6 @@ export function AppRoutingSetup() {
           <Route path="/account/security/current-sessions" element={<AccountCurrentSessionsPage />} />
           <Route path="/account/security/security-log" element={<AccountSecurityLogPage />} />
 
-          <Route path="/account/members/team-starter" element={<AccountTeamsStarterPage />} />
           <Route path="/account/members/teams" element={<AccountTeamsPage />} />
           <Route
             path="/account/members/team-info"
@@ -177,10 +172,7 @@ export function AppRoutingSetup() {
             path="/account/members/members-starter"
             element={<AccountMembersStarterPage />}
           />
-          <Route
-            path="/account/members/team-members"
-            element={<AccountTeamMembersPage />}
-          />
+
           <Route
             path="/account/members/import-members"
             element={<AccountImportMembersPage />}
@@ -302,7 +294,15 @@ export function AppRoutingSetup() {
           />
           <Route path="/store-admin/dashboard" element={<DashboardPage />} />
           <Route
-            path="users"  // <— RELATIF
+            path="/account/settings"
+            element={<AccountSettingsPlainPage />}
+          />
+          <Route
+            path="/Cotisation"
+            element={<AccountTeamMembersPage />}
+          />
+          <Route
+            path="/users"
             element={
               <RoleGuard roles={['ROLE_MODERATOR']} fallbackPath="/auth/signin">
                 <UserManagement />

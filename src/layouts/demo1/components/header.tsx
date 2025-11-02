@@ -62,7 +62,7 @@ export function Header() {
           <Link to="/" className="shrink-0">
             <img
               src={toAbsoluteUrl('/media/app/LOGO_SyndExpress.png')}
-              className="h-[25px] w-full"
+              className="h-[25px] w-[70px]"
               alt="mini-logo"
             />
           </Link>

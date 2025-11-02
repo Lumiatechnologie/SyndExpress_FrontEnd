@@ -1,6 +1,4 @@
-import { Faq } from '@/partials/common/faq';
-import { Help2 } from '@/partials/common/help2';
-import { InvitePeople, InviteWithLink, Members } from '../../../Cotisation/components';
+import {  Members } from './components';
 
 export function AccountTeamMembersContent() {
   return (

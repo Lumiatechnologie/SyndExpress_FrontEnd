@@ -1,3 +1,2 @@
-export * from './invite-people';
-export * from './invite-with-link';
-export * from './members';
+export * from './members.tsx';
+export * from './add-cotisation-dialog.tsx';

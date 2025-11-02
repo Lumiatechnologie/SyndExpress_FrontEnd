@@ -6,7 +6,6 @@ import {
 } from '@/partials/common/highlighted-posts';
 import { BookUser, MessageCirclePlus, Users } from 'lucide-react';
 import { toAbsoluteUrl } from '@/lib/helpers';
-import { InviteWithLink } from '../members/team-members/components/invite-with-link';
 import { InvitePeople, Invites } from './components';
 
 export function AccountInviteAFriendContent() {
@@ -40,7 +39,6 @@ export function AccountInviteAFriendContent() {
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <InvitePeople />
           <Invites />
-          <InviteWithLink />
           <Engage
             title="Contact Support"
             description="Need assistance? Contact our support team for prompt, personalized help your queries & concerns."

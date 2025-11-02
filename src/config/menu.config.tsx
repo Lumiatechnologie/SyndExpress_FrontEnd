@@ -4,7 +4,6 @@ import {
   Badge,
   Bell,
   Bitcoin,
-  Bolt,
   Book,
   Briefcase,
   Building,
@@ -12,7 +11,6 @@ import {
   Captions,
   CheckCircle,
   Code,
-  Codepen,
   Coffee,
   File as DocumentIcon,
   Euro,
@@ -36,7 +34,6 @@ import {
   Network,
   Users as PeopleIcon,
   Plug,
-  ScrollText,
   Settings,
   Share2,
   Shield,
@@ -45,7 +42,6 @@ import {
   ShoppingCart,
   SquareMousePointer,
   Star,
-  Theater,
   ThumbsUp,
   TrendingUp,
   UserCheck,
@@ -54,7 +50,7 @@ import {
   Briefcase as WorkIcon,
   Zap,
 } from 'lucide-react';
-import { canModerate } from '@/lib/helpers'; 
+import { canModerate } from '@/lib/helpers';
 import { type MenuConfig } from './types';
 
 export const MENU_SIDEBAR: MenuConfig = [
@@ -66,7 +62,16 @@ export const MENU_SIDEBAR: MenuConfig = [
       { title: 'Dark Sidebar', path: '/dark-sidebar' },
     ],
   },
+ 
   { heading: 'User' },
+
+
+      {
+        title: 'Cotisation',
+        icon: UserCircle,
+        path: '/Cotisation',
+      },
+   
   {
     title: 'Public Profile',
     icon: UserCircle,
@@ -315,7 +320,7 @@ export const MENU_SIDEBAR: MenuConfig = [
       { title: 'Error 500', path: '/error/500' },
     ],
   },
-  
+
 ];
 
 export const MENU_SIDEBAR_CUSTOM: MenuConfig = [
@@ -382,12 +387,17 @@ export const MENU_SIDEBAR_COMPACT: MenuConfig = [
     ? [
         {
           title: 'User Management',
-          icon: UserCircle,     // ou ShieldUser si tu préfères
+          icon: UserCircle,
           path: '/users',
         },
       ]
     : []),
 
+    {
+      title: 'Cotisation',
+      icon: UserCircle,
+      path: '/Cotisation',
+    },
   {
     title: 'Public Profile',
     icon: UserCircle,
@@ -680,6 +690,10 @@ export const MENU_SIDEBAR_COMPACT: MenuConfig = [
 
 export const MENU_MEGA: MenuConfig = [
   { title: 'Home', path: '/' },
+  {
+    title:"cotisation",
+    path:"/Cotisation",
+  },
   {
     title: 'Profiles',
     children: [
@@ -1130,6 +1144,10 @@ export const MENU_MEGA: MenuConfig = [
 
 export const MENU_MEGA_MOBILE: MenuConfig = [
   { title: 'Home', path: '/' },
+  {
+    title:"cotisation",
+    path:"/Cotisation",
+  },
   {
     title: 'Profiles',
     children: [
@@ -1609,6 +1627,10 @@ export const MENU_HELP: MenuConfig = [
 ];
 
 export const MENU_ROOT: MenuConfig = [
+  {
+    title:"cotisation",
+    path:"/Cotisation",
+  },
   {
     title: 'Public Profile',
     icon: UserCircle,

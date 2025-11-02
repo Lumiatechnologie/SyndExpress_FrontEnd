@@ -1,3 +1,3 @@
-export * from './account-basic-content';
-export * from './account-basic-page';
-export * from '../../../Cotisation/components';
+export * from './account-basic-content.tsx';
+export * from './account-basic-page.tsx';
+export * from './components';

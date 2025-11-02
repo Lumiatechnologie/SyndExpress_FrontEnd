@@ -1,39 +1,37 @@
-import { Fragment } from 'react';
-import { PageNavbar } from '@/pages/account';
+import { Fragment, useState } from 'react';
 import {
   Toolbar,
   ToolbarActions,
   ToolbarDescription,
   ToolbarHeading,
   ToolbarPageTitle,
-} from '@/partials/common/toolbar';
-import { Link } from 'react-router';
-import { useSettings } from '@/providers/settings-provider';
-import { Button } from '@/components/ui/button';
-import { Container } from '@/components/common/container';
-import { AccountTeamMembersContent } from '.';
+} from '@/partials/common/toolbar.tsx';
+import { useSettings } from '@/providers/settings-provider.tsx';
+import { Button } from '@/components/ui/button.tsx';
+import { Container } from '@/components/common/container.tsx';
+import { AccountTeamMembersContent } from './index.ts';
+import { AddCotisationDialog } from './components/add-cotisation-dialog';
+import { UserRoundPlus } from 'lucide-react';
 
 export function AccountTeamMembersPage() {
   const { settings } = useSettings();
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   return (
     <Fragment>
-      <PageNavbar />
       {settings?.layout === 'demo1' && (
         <Container>
           <Toolbar>
             <ToolbarHeading>
               <ToolbarPageTitle />
               <ToolbarDescription>
-                Overview of all team members and roles.
+                Overview of all cotisations.
               </ToolbarDescription>
             </ToolbarHeading>
             <ToolbarActions>
-              <Button variant="outline">
-                <Link to="#">Import Members</Link>
-              </Button>
-              <Button>
-                <Link to="#">Add Member</Link>
+              <Button onClick={() => setDialogOpen(true)}>
+                <UserRoundPlus className="size-4" />
+                Add Cotisation
               </Button>
             </ToolbarActions>
           </Toolbar>
@@ -42,6 +40,15 @@ export function AccountTeamMembersPage() {
       <Container>
         <AccountTeamMembersContent />
       </Container>
+      <AddCotisationDialog
+        open={dialogOpen}
+        onOpenChange={setDialogOpen}
+        onSubmit={(newCotisation) => {
+          // Handle the new cotisation here
+          console.log('New cotisation:', newCotisation);
+          // You can add it to your data array or call an API
+        }}
+      />
     </Fragment>
   );
 }
