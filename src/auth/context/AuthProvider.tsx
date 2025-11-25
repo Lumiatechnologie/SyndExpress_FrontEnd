@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { AuthContext } from './auth-context';
 import { AuthModel, UserModel } from '@/auth/lib/models';
 import axiosInstance from '../api/axios';
+import { Cotisation } from '@/pages/Cotisation/models';
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [loading, setLoading] = useState(false);
@@ -86,7 +87,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   };
 
- 
+   const getCotisations = async (): Promise<Cotisation[]> => {
+  
+    try {
+      const response = await axiosInstance.get<Cotisation[]>(`/api/cotisation`);
+      return response.data;
+    } catch (error: any) {
+      console.error('Error fetching cotisations:', error);
+      throw new Error(error.response?.data?.message || 'Cotisations fetch failed');
+    }
+  };
 
   const isAdmin = user?.roles?.includes('ADMIN') ?? false;
 
@@ -110,6 +120,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         logout,
         verify: async () => {},
         DeleteAccount,
+        getCotisations,
         isAdmin,
       }}
     >

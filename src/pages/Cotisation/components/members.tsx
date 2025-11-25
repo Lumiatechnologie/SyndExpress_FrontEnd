@@ -18,15 +18,13 @@ import {
   Filter,
   Search,
   Settings2,
-  UserRoundPlus,
   X,
 } from 'lucide-react';
 import { toast } from 'sonner';
-import { toAbsoluteUrl } from '@/lib/helpers';
-import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard';
-import { Alert, AlertIcon, AlertTitle } from '@/components/ui/alert';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard.ts';
+import { Alert, AlertIcon, AlertTitle } from '@/components/ui/alert.tsx';
+import { Badge } from '@/components/ui/badge.tsx';
+import { Button } from '@/components/ui/button.tsx';
 import {
   Card,
   CardFooter,
@@ -34,94 +32,93 @@ import {
   CardHeading,
   CardTable,
   CardToolbar,
-} from '@/components/ui/card';
-import { Checkbox } from '@/components/ui/checkbox';
-import { DataGrid, useDataGrid } from '@/components/ui/data-grid';
-import { DataGridColumnHeader } from '@/components/ui/data-grid-column-header';
-import { DataGridColumnVisibility } from '@/components/ui/data-grid-column-visibility';
-import { DataGridPagination } from '@/components/ui/data-grid-pagination';
+} from '@/components/ui/card.tsx';
+import { Checkbox } from '@/components/ui/checkbox.tsx';
+import { DataGrid, useDataGrid } from '@/components/ui/data-grid.tsx';
+import { DataGridColumnHeader } from '@/components/ui/data-grid-column-header.tsx';
+import { DataGridColumnVisibility } from '@/components/ui/data-grid-column-visibility.tsx';
+import { DataGridPagination } from '@/components/ui/data-grid-pagination.tsx';
 import {
   DataGridTable,
   DataGridTableRowSelect,
   DataGridTableRowSelectAll,
-} from '@/components/ui/data-grid-table';
+} from '@/components/ui/data-grid-table.tsx';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+} from '@/components/ui/dropdown-menu.tsx';
+import { Input } from '@/components/ui/input.tsx';
+import { Label } from '@/components/ui/label.tsx';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover';
-import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
-import { Switch } from '@/components/ui/switch';
+} from '@/components/ui/popover.tsx';
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area.tsx';
+import { Cotisation } from '../models';
 
-interface IMember {
-  avatar: string;
-  name: string;
-  tasks: string;
-}
 
-interface ILocation {
-  name: string;
-  flag: string;
-}
-
-interface IStatus {
-  label: string;
-  variant:
-    | 'secondary'
-    | 'primary'
-    | 'destructive'
-    | 'success'
-    | 'info'
-    | 'mono'
-    | 'warning'
-    | null
-    | undefined;
-}
-
-interface IData {
-  Code: string;
-  MoisAnnée: string;
-  Montant: number;
-  CotisationID: string;
-  Utilisateur: string;
-  Matricule: string;
-  RecapCode:string;
-}
-
-const data: IData[] = [
-  { "Code": "CT001", "MoisAnnée": "04/2025", "Montant": 100, "CotisationID": "ID789", "Utilisateur": "Ali Benali", "Matricule": "MAT123", "RecapCode": "RC987" },
-  { "Code": "CT002", "MoisAnnée": "04/2025", "Montant": 120, "CotisationID": "ID790", "Utilisateur": "Sara Lahlou", "Matricule": "MAT124", "RecapCode": "RC988" },
-  { "Code": "CT003", "MoisAnnée": "04/2025", "Montant": 110, "CotisationID": "ID791", "Utilisateur": "Omar Fassi", "Matricule": "MAT125", "RecapCode": "RC989" },
-  { "Code": "CT004", "MoisAnnée": "04/2025", "Montant": 90, "CotisationID": "ID792", "Utilisateur": "Nadia Bennis", "Matricule": "MAT126", "RecapCode": "RC990" },
-  { "Code": "CT005", "MoisAnnée": "04/2025", "Montant": 130, "CotisationID": "ID793", "Utilisateur": "Youssef Idrissi", "Matricule": "MAT127", "RecapCode": "RC991" },
-  { "Code": "CT006", "MoisAnnée": "04/2025", "Montant": 95, "CotisationID": "ID794", "Utilisateur": "Laila Hammou", "Matricule": "MAT128", "RecapCode": "RC992" },
-  { "Code": "CT007", "MoisAnnée": "04/2025", "Montant": 105, "CotisationID": "ID795", "Utilisateur": "Karim Saidi", "Matricule": "MAT129", "RecapCode": "RC993" },
-  { "Code": "CT008", "MoisAnnée": "04/2025", "Montant": 115, "CotisationID": "ID796", "Utilisateur": "Fatima Zahra", "Matricule": "MAT130", "RecapCode": "RC994" },
-  { "Code": "CT009", "MoisAnnée": "04/2025", "Montant": 125, "CotisationID": "ID797", "Utilisateur": "Hassan El Khattabi", "Matricule": "MAT131", "RecapCode": "RC995" },
-  { "Code": "CT010", "MoisAnnée": "04/2025", "Montant": 140, "CotisationID": "ID798", "Utilisateur": "Salma Raji", "Matricule": "MAT132", "RecapCode": "RC996" },
-  { "Code": "CT011", "MoisAnnée": "04/2025", "Montant": 100, "CotisationID": "ID799", "Utilisateur": "Amine Benjelloun", "Matricule": "MAT133", "RecapCode": "RC997" },
-  { "Code": "CT012", "MoisAnnée": "04/2025", "Montant": 110, "CotisationID": "ID800", "Utilisateur": "Imane Chafai", "Matricule": "MAT134", "RecapCode": "RC998" },
-  { "Code": "CT013", "MoisAnnée": "04/2025", "Montant": 95, "CotisationID": "ID801", "Utilisateur": "Rachid Fadil", "Matricule": "MAT135", "RecapCode": "RC999" },
-  { "Code": "CT014", "MoisAnnée": "04/2025", "Montant": 120, "CotisationID": "ID802", "Utilisateur": "Sofia El Amrani", "Matricule": "MAT136", "RecapCode": "RC1000" },
-  { "Code": "CT015", "MoisAnnée": "04/2025", "Montant": 130, "CotisationID": "ID803", "Utilisateur": "Mounir Kabbaj", "Matricule": "MAT137", "RecapCode": "RC1001" },
-  { "Code": "CT016", "MoisAnnée": "04/2025", "Montant": 105, "CotisationID": "ID804", "Utilisateur": "Aya El Ghazali", "Matricule": "MAT138", "RecapCode": "RC1002" },
-  { "Code": "CT017", "MoisAnnée": "04/2025", "Montant": 115, "CotisationID": "ID805", "Utilisateur": "Yassin Lahlou", "Matricule": "MAT139", "RecapCode": "RC1003" },
-  { "Code": "CT018", "MoisAnnée": "04/2025", "Montant": 125, "CotisationID": "ID806", "Utilisateur": "Nora Benkirane", "Matricule": "MAT140", "RecapCode": "RC1004" },
-  { "Code": "CT019", "MoisAnnée": "04/2025", "Montant": 135, "CotisationID": "ID807", "Utilisateur": "Hicham Bouziane", "Matricule": "MAT141", "RecapCode": "RC1005" },
-  { "Code": "CT020", "MoisAnnée": "04/2025", "Montant": 140, "CotisationID": "ID808", "Utilisateur": "Lina Rachid", "Matricule": "MAT142", "RecapCode": "RC1006" }
+const cotisations: Cotisation[] = [
+  {
+    id: 1,
+    code: "COT-001",
+    monthYear: "2025-01",
+    montant: 1500,
+    cotisationId: 101,
+    userName: "Ayman Dakir",
+    userMatricule: "USR-001",
+    recapitulatifCode: "REC-2025-01"
+  },
+  {
+    id: 2,
+    code: "COT-002",
+    monthYear: "2025-02",
+    montant: 1750,
+    cotisationId: 102,
+    userName: "Sara Benali",
+    userMatricule: "USR-002",
+    recapitulatifCode: "REC-2025-02"
+  },
+  {
+    id: 3,
+    code: "COT-003",
+    monthYear: "2025-03",
+    montant: 1600,
+    cotisationId: 103,
+    userName: "Mohamed El Idrissi",
+    userMatricule: "USR-003",
+    recapitulatifCode: "REC-2025-03"
+  },
+  {
+    id: 4,
+    code: "COT-004",
+    monthYear: "2025-04",
+    montant: 2000,
+    cotisationId: 104,
+    userName: "Nadia Bouzid",
+    userMatricule: "USR-004",
+    recapitulatifCode: "REC-2025-04"
+  },
+  {
+    id: 5,
+    code: "COT-005",
+    monthYear: "2025-05",
+    montant: 1800,
+    cotisationId: 105,
+    userName: "Youssef Charki",
+    userMatricule: "USR-005",
+    recapitulatifCode: "REC-2025-05"
+  }
 ];
 
 
-function ActionsCell({ row }: { row: Row<IData> }) {
+
+
+function ActionsCell({ row }: { row: Row<Cotisation> }) {
+  
   const { copyToClipboard } = useCopyToClipboard();
   const handleCopyId = () => {
     copyToClipboard(String(row.original.id));
@@ -175,9 +172,22 @@ const Members = () => {
   ]);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedStatuses, setSelectedStatuses] = useState<string[]>([]);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  /*const { getCotisations } = useAuth();
+  const {
+    data = [],
+    isLoading,
+    isError,
+    error,
+  } = useQuery<Cotisation[]>({
+    queryKey: ['cotisations'],
+    queryFn: getCotisations,
+    staleTime: 1000 * 60 * 5,
+    retry: 1,
+  });*/
 
   const filteredData = useMemo(() => {
-    return data.filter((item) => {
+    return cotisations.filter((item) => {
       // Filter by status
      /* const matchesStatus =
         !selectedStatuses?.length ||
@@ -187,17 +197,17 @@ const Members = () => {
       const searchLower = searchQuery.toLowerCase();
       const matchesSearch =
         !searchQuery ||
-        item.Matricule.toLowerCase().includes(searchLower) ||
-        item.Utilisateur.toLowerCase().includes(searchLower) ||
-        item.RecapCode.toLowerCase().includes(searchLower);
+        item.userMatricule.toLowerCase().includes(searchLower) ||
+        item.userName.toLowerCase().includes(searchLower) ||
+        item.code.toLowerCase().includes(searchLower);
 
-      return   matchesSearch;
+      return matchesSearch;
     });
-  }, [searchQuery, selectedStatuses]);
+  }, [searchQuery]);
   const statusCounts = useMemo(() => {
-    return data.reduce(
+    return cotisations.reduce(
       (acc, item) => {
-        acc[item.CotisationID] = (acc[item.CotisationID] || 0) + 1;
+        acc[item.id] = (acc[item.id] || 0) + 1;
         return acc;
       },
       {} as Record<string, number>,
@@ -210,11 +220,11 @@ const Members = () => {
     );
   };
 
-  const columns = useMemo<ColumnDef<IData>[]>(
+  const columns = useMemo<ColumnDef<Cotisation>[]>(
     () => [
       {
         accessorKey: 'CotisationID',
-        accessorFn: (row) => row.CotisationID,
+        accessorFn: (row) => row.id,
         header: () => <DataGridTableRowSelectAll />,
         cell: ({ row }) => <DataGridTableRowSelect row={row} />,
         enableSorting: false,
@@ -227,7 +237,7 @@ const Members = () => {
       },
       {
         id: 'CotisationID',
-        accessorFn: (row) => row.CotisationID,
+        accessorFn: (row) => row.id,
         header: ({ column }) => (
           <DataGridColumnHeader title="CotisationID" column={column} />
         ),
@@ -235,7 +245,7 @@ const Members = () => {
           <div className="flex items-center gap-1.5">
 
             <span className="leading-none text-foreground font-normal">
-              {row.original.CotisationID}
+              {row.original.id}
             </span>
           </div>
         ),
@@ -247,7 +257,7 @@ const Members = () => {
       },
       {
         id: 'RecapCode',
-        accessorFn: (row) => row.RecapCode,
+        accessorFn: (row) => row.code,
         header: ({ column }) => (
           <DataGridColumnHeader title="RecapCode" column={column} />
         ),
@@ -255,7 +265,7 @@ const Members = () => {
           <div className="flex items-center gap-1.5">
 
             <span className="leading-none text-foreground font-normal">
-              {row.original.CotisationID}
+              {row.original.code}
             </span>
           </div>
         ),
@@ -266,8 +276,8 @@ const Members = () => {
         },
       },
       {
-        id: 'MoisAnnée',
-        accessorFn: (row) => row.MoisAnnée,
+        id: 'monthYear',
+        accessorFn: (row) => row.monthYear,
         header: ({ column }) => (
           <DataGridColumnHeader title="MoisAnnée" column={column} />
         ),
@@ -275,7 +285,7 @@ const Members = () => {
           <div className="flex items-center gap-1.5">
 
             <span className="leading-none text-foreground font-normal">
-              {row.original.MoisAnnée}
+              {row.original.monthYear}
             </span>
           </div>
         ),
@@ -287,7 +297,7 @@ const Members = () => {
       },
       {
         id: 'Montant',
-        accessorFn: (row) => row.Montant,
+        accessorFn: (row) => row.montant,
         header: ({ column }) => (
           <DataGridColumnHeader title="Montant" column={column} />
         ),
@@ -295,7 +305,7 @@ const Members = () => {
           <div className="flex items-center gap-1.5">
 
             <span className="leading-none text-foreground font-normal">
-              {row.original.Montant}
+              {row.original.montant}
             </span>
           </div>
         ),
@@ -306,14 +316,14 @@ const Members = () => {
         },
       },
       {
-        id: 'Code',
-        accessorFn: (row) => row.Code,
+        id: 'userName',
+        accessorFn: (row) => row.userName,
         header: ({ column }) => (
-          <DataGridColumnHeader title="Code" column={column} />
+          <DataGridColumnHeader title="userName" column={column} />
         ),
         cell: ({ row }) => (
           <span className="text-secondary-foreground font-normal">
-            {row.original.Code}
+            {row.original.userName}
           </span>
         ),
         enableSorting: true,
@@ -340,7 +350,7 @@ const Members = () => {
     columns,
     data: filteredData,
     pageCount: Math.ceil((filteredData?.length || 0) / pagination.pageSize),
-    getRowId: (row: IData) => row.CotisationID,
+    getRowId: (row: Cotisation) => String(row.id),
     state: {
       pagination,
       sorting,
@@ -371,6 +381,10 @@ const Members = () => {
       </CardToolbar>
     );
   };
+
+  //const hasData = filteredData.length > 0;
+ /* const errorMessage =
+    error instanceof Error ? error.message : 'Unable to load cotisations.';*/
 
   return (
     <DataGrid
@@ -448,20 +462,28 @@ const Members = () => {
                   </div>
                 </PopoverContent>
               </Popover>
+             
             </div>
           </CardHeading>
           <Toolbar />
         </CardHeader>
         <CardTable>
-          <ScrollArea>
-            <DataGridTable />
-            <ScrollBar orientation="horizontal" />
-          </ScrollArea>
+          {filteredData.length > 0 ? (
+            <ScrollArea>
+              <DataGridTable />
+              <ScrollBar orientation="horizontal" />
+            </ScrollArea>
+          ) : (
+            <div className="py-12 text-center text-muted-foreground">
+              No cotisations found.
+            </div>
+          )}
         </CardTable>
         <CardFooter>
           <DataGridPagination />
         </CardFooter>
       </Card>
+     
     </DataGrid>
   );
 };

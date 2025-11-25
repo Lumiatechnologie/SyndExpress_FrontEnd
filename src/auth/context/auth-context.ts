@@ -1,5 +1,6 @@
 import { createContext, useContext } from 'react';
 import { AuthModel, UserModel } from '@/auth/lib/models';
+import { Cotisation } from '@/pages/Cotisation/models';
 
 // Create AuthContext with types
 export const AuthContext = createContext<{
@@ -29,6 +30,7 @@ export const AuthContext = createContext<{
   logout: () => void;
   verify: () => Promise<void>;
   DeleteAccount: (username:string) => Promise<void>;
+  getCotisations: () => Promise<Cotisation[]>;
   isAdmin: boolean;
 }>({
   loading: false,
@@ -46,6 +48,8 @@ export const AuthContext = createContext<{
   logout: () => {},
   verify: async () => {},
   DeleteAccount  : async () => {},
+  getCotisations: async () => [],
+
 
   isAdmin: false,
 });
