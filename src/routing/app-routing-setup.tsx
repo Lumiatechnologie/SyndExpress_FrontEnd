@@ -4,6 +4,8 @@ import { ErrorRouting } from '@/errors/error-routing';
 import { Demo1Layout } from '@/layouts/demo1/layout';
 import RoleGuard from '../components/guards/RoleGuard';
 import UserManagement from '../pages/users/UserManagement';
+import HabitatsAdminPage from '@/pages/habitats/HabitatsAdminPage';
+
 
 import {
   AccountActivityPage,
@@ -304,11 +306,19 @@ export function AppRoutingSetup() {
           <Route
             path="users"  // <— RELATIF
             element={
-              <RoleGuard roles={['ROLE_MODERATOR']} fallbackPath="/auth/signin">
+    <RoleGuard roles={['ROLE_ADMIN', 'ROLE_MODERATOR']} fallbackPath="/auth/signin">
                 <UserManagement />
               </RoleGuard>
             }
           />
+          <Route
+  path="habitats"
+  element={
+    <RoleGuard roles={['ROLE_ADMIN', 'ROLE_MODERATOR']} fallbackPath="/auth/signin">
+      <HabitatsAdminPage />
+    </RoleGuard>
+  }
+/>
         </Route>
       </Route>
       <Route path="error/*" element={<ErrorRouting />} />

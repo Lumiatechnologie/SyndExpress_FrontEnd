@@ -39,4 +39,27 @@ const removeAuth = () => {
   }
 };
 
+export function decodeJwt<T = any>(token?: string | null): T | null {
+  if (!token) return null;
+  try {
+    const payload = token.split(".")[1];
+    const json = atob(payload.replace(/-/g, "+").replace(/_/g, "/"));
+    return JSON.parse(json) as T;
+  } catch {
+    return null;
+  }
+}
+
+export function extractRoles(payload: any): string[] {
+  if (!payload) return [];
+  const roles =
+    payload.roles ??
+    payload.authorities ??
+    (typeof payload.scope === "string"
+      ? payload.scope.split(" ")
+      : payload.scope) ??
+    [];
+  return Array.isArray(roles) ? roles.map(String) : [String(roles)].filter(Boolean);
+}
+
 export { AUTH_LOCAL_STORAGE_KEY, getAuth, removeAuth, setAuth };

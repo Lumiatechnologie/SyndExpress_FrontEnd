@@ -6,12 +6,12 @@ type UserDto = {
   id?: number;
   username?: string;
   email?: string;
-  roles?: unknown;          // format flexible
+  roles?: unknown;
   matricule?: string;
-  startActivity?: string;   // yyyy-mm-dd
+  startActivity?: string;
 };
 
-// ---------- Helpers rôles robustes ----------
+// ---------- Helpers rôles ----------
 function toRoleString(r: unknown): string {
   if (typeof r === 'string') return r;
   if (r && typeof r === 'object') {
@@ -30,8 +30,9 @@ function normalizeRole(roles?: unknown): string[] {
     .map((s) => s.toUpperCase());
 }
 
-function mapRoles(value: 'user' | 'moderator'): string[] {
-  return value === 'moderator' ? ['ROLE_MODERATOR'] : ['ROLE_USER'];
+// ✅ CORRECTION : Retourne un string au lieu d'un array
+function mapRole(value: 'user' | 'moderator'): string {
+  return value === 'moderator' ? 'moderator' : 'user';
 }
 
 // ---------- API ----------
@@ -78,7 +79,6 @@ const UserManagement: React.FC = () => {
       setError(null);
       const res = await axiosInstance.get(API.list);
 
-      // backend peut renvoyer {content: [...]} (Page Spring) ou [...]
       const list: UserDto[] = Array.isArray(res.data)
         ? res.data
         : Array.isArray(res.data?.content)
@@ -129,11 +129,13 @@ const UserManagement: React.FC = () => {
       id: editing?.id,
       username: form.username,
       email: form.email,
-      role: mapRoles(form.role),
-      password: form.password || undefined, // ne pas changer si vide
+      role: mapRole(form.role),
+      password: form.password || undefined,
       matricule: form.matricule,
       startActivity: form.startActivity,
     };
+
+    console.log('Payload envoyé:', payload);
 
     try {
       setLoading(true);
@@ -145,18 +147,17 @@ const UserManagement: React.FC = () => {
       setFormOpen(false);
       await fetchUsers();
     } catch (e: any) {
-      console.error(e);
-      setError(e?.response?.data?.message || e.message || 'Erreur lors de l’enregistrement');
+      console.error('Erreur:', e);
+      setError(e?.response?.data?.message || e.message || "Erreur lors de l'enregistrement");
     } finally {
       setLoading(false);
     }
   }
 
-  // --- suppression par username ---
   async function removeUser(u?: UserDto) {
     const username = u?.username?.trim();
     if (!username) return;
-    if (!confirm(`Supprimer l’utilisateur « ${username} » ?`)) return;
+    if (!confirm(`Supprimer l'utilisateur « ${username} » ?`)) return;
 
     try {
       setLoading(true);
@@ -164,7 +165,6 @@ const UserManagement: React.FC = () => {
 
       await axiosInstance.delete(API.remove(username));
 
-      // Optimiste: retire localement puis rafraîchis
       setUsers((prev) => prev.filter((x) => x.username !== username));
       await fetchUsers();
     } catch (e: any) {
@@ -174,7 +174,6 @@ const UserManagement: React.FC = () => {
       setLoading(false);
     }
   }
-
 
   return (
     <div className="p-6 space-y-6">
@@ -310,6 +309,7 @@ const UserManagement: React.FC = () => {
                     value={form.password}
                     onChange={(e) => setForm({ ...form, password: e.target.value })}
                     className="border rounded-xl px-3 py-2"
+                    required={!editing}
                   />
                 </label>
                 <label className="flex flex-col gap-1">
@@ -321,7 +321,7 @@ const UserManagement: React.FC = () => {
                   />
                 </label>
                 <label className="flex flex-col gap-1">
-                  <span className="text-sm">Début d’activité</span>
+                  <span className="text-sm">Début d'activité</span>
                   <input
                     type="date"
                     value={form.startActivity}
@@ -338,7 +338,11 @@ const UserManagement: React.FC = () => {
                 >
                   Annuler
                 </button>
-                <button disabled={loading} type="submit" className="px-4 py-2 rounded-xl bg-black text-white">
+                <button 
+                  disabled={loading} 
+                  type="submit" 
+                  className="px-4 py-2 rounded-xl bg-black text-white disabled:opacity-50"
+                >
                   {editing ? 'Enregistrer' : 'Créer'}
                 </button>
               </div>

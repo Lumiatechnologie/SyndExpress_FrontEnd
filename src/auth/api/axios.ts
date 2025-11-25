@@ -7,19 +7,16 @@ const axiosInstance = axios.create({
   },
 });
 
-axiosInstance.interceptors.request.use(
-  (config) => {
-    const accessToken = localStorage.getItem("auth");
-    const auth = accessToken ? JSON.parse(accessToken) : null;
+axiosInstance.interceptors.request.use((config) => {
+  const raw = localStorage.getItem("auth");
+  const auth = raw ? JSON.parse(raw) : null;
+  if (auth?.accessToken) {
+    config.headers = config.headers ?? {};
+    (config.headers as any).Authorization = `Bearer ${auth.accessToken}`;
+  }
+  return config;
+});
 
-    if (auth?.accessToken) {
-      config.headers.Authorization = `Bearer ${auth.accessToken}`;
-    }
-
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
 
 axiosInstance.interceptors.response.use(
   (response) => response,

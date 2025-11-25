@@ -57,6 +57,10 @@ import {
 import { canModerate } from '@/lib/helpers'; 
 import { type MenuConfig } from './types';
 
+
+
+
+
 export const MENU_SIDEBAR: MenuConfig = [
   {
     title: 'Dashboards',
@@ -67,6 +71,13 @@ export const MENU_SIDEBAR: MenuConfig = [
     ],
   },
   { heading: 'User' },
+   {
+    title: 'Habitats',
+    path: '/habitats',
+    // icon: Building, // optionnel si tu veux une icône
+  },
+  
+  
   {
     title: 'Public Profile',
     icon: UserCircle,
