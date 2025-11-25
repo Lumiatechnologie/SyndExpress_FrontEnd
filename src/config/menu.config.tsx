@@ -68,24 +68,16 @@ export const MENU_SIDEBAR: MenuConfig = [
   },
  
   { heading: 'User' },
-<<<<<<< HEAD
-   {
+  {
     title: 'Habitats',
     path: '/habitats',
-    // icon: Building, // optionnel si tu veux une icône
+    // icon: Building, // Vous pouvez décommenter ça plus tard si besoin
   },
-  
-  
-=======
-
-
-      {
-        title: 'Cotisation',
-        icon: UserCircle,
-        path: '/Cotisation',
-      },
-   
->>>>>>> d9960f53d34d308eb6b1ba2cf5173d41f547835e
+  {
+    title: 'Cotisation',
+    icon: UserCircle,
+    path: '/Cotisation',
+  },
   {
     title: 'Public Profile',
     icon: UserCircle,
