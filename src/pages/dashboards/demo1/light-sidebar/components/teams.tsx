@@ -49,189 +49,189 @@ interface IData {
 const data: IData[] = [
   {
     id: 1,
-    name: 'Product Management',
-    description: 'Product development & lifecycle',
+    name: 'Résidence Les Jardins',
+    description: '12 appartements - Avenue de la République',
     rating: 5,
     created_at: '21 Oct, 2024',
     updated_at: '21 Oct, 2024',
     users: [
-      { path: '/media/avatars/300-4.png', fallback: 'PM' }, // Cristian Mitchell
-      { path: '/media/avatars/300-1.png', fallback: 'PM' }, // Grace Mueller
-      { path: '/media/avatars/300-2.png', fallback: 'PM' }, // Ephraim Wilderman
-      { path: '/media/avatars/300-4.png', fallback: 'PM' }, // Colin Balistreri
+      { path: '/media/avatars/300-4.png', fallback: 'RJ' },
+      { path: '/media/avatars/300-1.png', fallback: 'RJ' },
+      { path: '/media/avatars/300-2.png', fallback: 'RJ' },
+      { path: '/media/avatars/300-4.png', fallback: 'RJ' },
     ],
   },
   {
     id: 2,
-    name: 'Marketing Team',
-    description: 'Campaigns & market analysis',
-    rating: 3.5,
+    name: 'Immeuble Le Panorama',
+    description: '24 appartements - Boulevard des Champs',
+    rating: 4.5,
     created_at: '15 Oct, 2024',
     updated_at: '15 Oct, 2024',
     users: [
-      { path: '/media/avatars/300-4.png', fallback: 'MT' }, // Keenan Keeling
-      { path: '', fallback: 'MT' }, // Una Goldner
+      { path: '/media/avatars/300-4.png', fallback: 'IP' },
+      { path: '', fallback: 'IP' },
     ],
   },
   {
     id: 3,
-    name: 'HR Department',
-    description: 'Talent acquisition, employee welfare',
+    name: 'Copropriété Les Pins',
+    description: '8 villas - Route de la Plage',
     rating: 5,
     created_at: '10 Oct, 2024',
     updated_at: '10 Oct, 2024',
     users: [
-      { path: '/media/avatars/300-4.png', fallback: 'HR' }, // Rupert Maggio
-      { path: '/media/avatars/300-1.png', fallback: 'HR' }, // Pattie Morar
-      { path: '/media/avatars/300-2.png', fallback: 'HR' }, // Stuart Hermiston
+      { path: '/media/avatars/300-4.png', fallback: 'CP' },
+      { path: '/media/avatars/300-1.png', fallback: 'CP' },
+      { path: '/media/avatars/300-2.png', fallback: 'CP' },
     ],
   },
   {
     id: 4,
-    name: 'Sales Division',
-    description: 'Customer relations, sales strategy',
-    rating: 5,
+    name: 'Résidence Le Soleil',
+    description: '18 appartements - Rue du Commerce',
+    rating: 4,
     created_at: '05 Oct, 2024',
     updated_at: '05 Oct, 2024',
     users: [
-      { path: '/media/avatars/300-24.png', fallback: 'SD' }, // Ezequiel Quigley
-      { path: '/media/avatars/300-7.png', fallback: 'SD' }, // Florine Homenick
+      { path: '/media/avatars/300-24.png', fallback: 'RS' },
+      { path: '/media/avatars/300-7.png', fallback: 'RS' },
     ],
   },
   {
     id: 5,
-    name: 'Development Team',
-    description: 'Software development',
+    name: 'Immeuble Les Oliviers',
+    description: '15 appartements - Avenue Victor Hugo',
     rating: 4.5,
     created_at: '01 Oct, 2024',
     updated_at: '01 Oct, 2024',
     users: [
-      { path: '/media/avatars/300-3.png', fallback: 'DT' }, // Ubaldo Mosciski
-      { path: '/media/avatars/300-8.png', fallback: 'DT' }, // Jarrod Kerluke
-      { path: '/media/avatars/300-9.png', fallback: 'DT' }, // Trace Rosenbaum
+      { path: '/media/avatars/300-3.png', fallback: 'IO' },
+      { path: '/media/avatars/300-8.png', fallback: 'IO' },
+      { path: '/media/avatars/300-9.png', fallback: 'IO' },
     ],
   },
   {
     id: 6,
-    name: 'Quality Assurance',
-    description: 'Product testing',
+    name: 'Résidence La Mer',
+    description: '20 appartements - Promenade des Anglais',
     rating: 5,
     created_at: '25 Sep, 2024',
     updated_at: '25 Sep, 2024',
     users: [
-      { path: '/media/avatars/300-6.png', fallback: 'DT' }, // Ubaldo Mosciski
-      { path: '/media/avatars/300-5.png', fallback: 'DT' }, // Jarrod Kerluke
+      { path: '/media/avatars/300-6.png', fallback: 'RM' },
+      { path: '/media/avatars/300-5.png', fallback: 'RM' },
     ],
   },
   {
     id: 7,
-    name: 'Finance Team',
-    description: 'Financial planning',
+    name: 'Copropriété Le Château',
+    description: '6 villas - Chemin des Collines',
     rating: 4,
     created_at: '20 Sep, 2024',
     updated_at: '20 Sep, 2024',
     users: [
-      { path: '/media/avatars/300-10.png', fallback: 'DT' }, // Ubaldo Mosciski
-      { path: '/media/avatars/300-11.png', fallback: 'DT' }, // Jarrod Kerluke
-      { path: '/media/avatars/300-12.png', fallback: 'DT' }, // Trace Rosenbaum
+      { path: '/media/avatars/300-10.png', fallback: 'CC' },
+      { path: '/media/avatars/300-11.png', fallback: 'CC' },
+      { path: '/media/avatars/300-12.png', fallback: 'CC' },
     ],
   },
   {
     id: 8,
-    name: 'Customer Support',
-    description: 'Customer service',
-    rating: 3,
+    name: 'Résidence Les Roses',
+    description: '14 appartements - Rue de la Paix',
+    rating: 3.5,
     created_at: '15 Sep, 2024',
     updated_at: '15 Sep, 2024',
     users: [
-      { path: '/media/avatars/300-13.png', fallback: 'DT' }, // Ubaldo Mosciski
-      { path: '/media/avatars/300-14.png', fallback: 'DT' }, // Jarrod Kerluke
+      { path: '/media/avatars/300-13.png', fallback: 'RR' },
+      { path: '/media/avatars/300-14.png', fallback: 'RR' },
     ],
   },
   {
     id: 9,
-    name: 'R&D Team',
-    description: 'Research & development',
+    name: 'Immeuble Le Parc',
+    description: '22 appartements - Avenue du Parc',
     rating: 5,
     created_at: '10 Sep, 2024',
     updated_at: '10 Sep, 2024',
     users: [
-      { path: '/media/avatars/300-15.png', fallback: 'DT' }, // Ubaldo Mosciski
-      { path: '/media/avatars/300-16.png', fallback: 'DT' }, // Jarrod Kerluke
+      { path: '/media/avatars/300-15.png', fallback: 'IP' },
+      { path: '/media/avatars/300-16.png', fallback: 'IP' },
     ],
   },
   {
     id: 10,
-    name: 'Operations Team',
-    description: 'Operations management',
+    name: 'Résidence Les Vignes',
+    description: '16 appartements - Route de la Vigne',
     rating: 4,
     created_at: '05 Sep, 2024',
     updated_at: '05 Sep, 2024',
     users: [
-      { path: '/media/avatars/300-17.png', fallback: 'DT' }, // Ubaldo Mosciski
-      { path: '/media/avatars/300-18.png', fallback: 'DT' }, // Jarrod Kerluke
-      { path: '/media/avatars/300-19.png', fallback: 'DT' }, // Trace Rosenbaum
+      { path: '/media/avatars/300-17.png', fallback: 'RV' },
+      { path: '/media/avatars/300-18.png', fallback: 'RV' },
+      { path: '/media/avatars/300-19.png', fallback: 'RV' },
     ],
   },
   {
     id: 11,
-    name: 'IT Support',
-    description: 'Technical support',
+    name: 'Copropriété Les Cyprès',
+    description: '10 villas - Allée des Cyprès',
     rating: 5,
     created_at: '01 Sep, 2024',
     updated_at: '01 Sep, 2024',
     users: [
-      { path: '/media/avatars/300-20.png', fallback: 'DT' }, // Ubaldo Mosciski
-      { path: '/media/avatars/300-21.png', fallback: 'DT' }, // Jarrod Kerluke
+      { path: '/media/avatars/300-20.png', fallback: 'CC' },
+      { path: '/media/avatars/300-21.png', fallback: 'CC' },
     ],
   },
   {
     id: 12,
-    name: 'Legal Team',
-    description: 'Legal support',
+    name: 'Résidence Le Clos',
+    description: '19 appartements - Impasse du Clos',
     rating: 4,
     created_at: '25 Aug, 2024',
     updated_at: '25 Aug, 2024',
     users: [
-      { path: '/media/avatars/300-22.png', fallback: 'DT' }, // Ubaldo Mosciski
-      { path: '/media/avatars/300-23.png', fallback: 'DT' }, // Jarrod Kerluke
+      { path: '/media/avatars/300-22.png', fallback: 'RC' },
+      { path: '/media/avatars/300-23.png', fallback: 'RC' },
     ],
   },
   {
     id: 13,
-    name: 'Logistics Team',
-    description: 'Supply chain',
-    rating: 3,
+    name: 'Immeuble Les Tilleuls',
+    description: '13 appartements - Boulevard des Tilleuls',
+    rating: 3.5,
     created_at: '20 Aug, 2024',
     updated_at: '20 Aug, 2024',
     users: [
-      { path: '/media/avatars/300-24.png', fallback: 'DT' }, // Ubaldo Mosciski
-      { path: '/media/avatars/300-25.png', fallback: 'DT' }, // Jarrod Kerluke
+      { path: '/media/avatars/300-24.png', fallback: 'IT' },
+      { path: '/media/avatars/300-25.png', fallback: 'IT' },
     ],
   },
   {
     id: 14,
-    name: 'Procurement Team',
-    description: 'Supplier management',
+    name: 'Résidence Le Jardin',
+    description: '17 appartements - Rue du Jardin',
     rating: 5,
     created_at: '15 Aug, 2024',
     updated_at: '15 Aug, 2024',
     users: [
-      { path: '/media/avatars/300-26.png', fallback: 'DT' }, // Ubaldo Mosciski
-      { path: '/media/avatars/300-27.png', fallback: 'DT' }, // Jarrod Kerluke
-      { path: '/media/avatars/300-28.png', fallback: 'DT' }, // Trace Rosenbaum
+      { path: '/media/avatars/300-26.png', fallback: 'RJ' },
+      { path: '/media/avatars/300-27.png', fallback: 'RJ' },
+      { path: '/media/avatars/300-28.png', fallback: 'RJ' },
     ],
   },
   {
     id: 15,
-    name: 'Training Team',
-    description: 'Employee training',
+    name: 'Copropriété Les Palmiers',
+    description: '9 villas - Avenue des Palmiers',
     rating: 4,
     created_at: '10 Aug, 2024',
     updated_at: '10 Aug, 2024',
     users: [
-      { path: '/media/avatars/300-29.png', fallback: 'DT' }, // Ubaldo Mosciski
-      { path: '/media/avatars/300-30.png', fallback: 'DT' }, // Jarrod Kerluke
+      { path: '/media/avatars/300-29.png', fallback: 'CP' },
+      { path: '/media/avatars/300-30.png', fallback: 'CP' },
     ],
   },
 ];
@@ -275,7 +275,7 @@ const Teams = () => {
         id: 'name',
         accessorFn: (row) => row.name,
         header: ({ column }) => (
-          <DataGridColumnHeader title="Team" column={column} />
+          <DataGridColumnHeader title="Résidence" column={column} />
         ),
         cell: ({ row }) => (
           <div className="flex flex-col gap-2">
@@ -302,7 +302,7 @@ const Teams = () => {
         id: 'rating',
         accessorFn: (row) => row.rating,
         header: ({ column }) => (
-          <DataGridColumnHeader title="Rating" column={column} />
+          <DataGridColumnHeader title="Note" column={column} />
         ),
         cell: ({ row }) => (
           <Rating
@@ -320,7 +320,7 @@ const Teams = () => {
         id: 'updated_at',
         accessorFn: (row) => row.updated_at,
         header: ({ column }) => (
-          <DataGridColumnHeader title="Last Modified" column={column} />
+          <DataGridColumnHeader title="Dernière MAJ" column={column} />
         ),
         cell: ({ row }) => row.original.updated_at,
         enableSorting: true,
@@ -333,7 +333,7 @@ const Teams = () => {
         id: 'users',
         accessorFn: (row) => row.users,
         header: ({ column }) => (
-          <DataGridColumnHeader title="Members" column={column} />
+          <DataGridColumnHeader title="Résidents" column={column} />
         ),
         cell: ({ row }) => (
           <AvatarGroup group={row.original.users} size="size-8" />
@@ -382,11 +382,11 @@ const Teams = () => {
     >
       <Card>
         <CardHeader className="py-3.5">
-          <CardTitle>Teams</CardTitle>
+          <CardTitle>Résidences</CardTitle>
           <CardToolbar className="relative">
             <Search className="size-4 text-muted-foreground absolute start-3 top-1/2 -translate-y-1/2" />
             <Input
-              placeholder="Search Teams..."
+              placeholder="Rechercher une résidence..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="ps-9 w-40"

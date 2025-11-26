@@ -12,9 +12,9 @@ import {
 } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
 
-// Hardcoded dummy data for the earnings chart
+// Hardcoded dummy data for the cotisations chart
 const dummyChartData: number[] = [
-  58, 64, 52, 45, 42, 38, 45, 53, 56, 65, 75, 85,
+  42, 48, 55, 52, 58, 62, 68, 65, 72, 78, 82, 88,
 ];
 
 const EarningsChart = () => {
@@ -42,7 +42,7 @@ const EarningsChart = () => {
   const options: ApexOptions = {
     series: [
       {
-        name: 'Earnings',
+        name: 'Cotisations',
         data: chartData ?? [],
       },
     ],
@@ -109,7 +109,7 @@ const EarningsChart = () => {
           fontSize: '12px',
         },
         formatter: (defaultValue) => {
-          return `$${defaultValue}K`;
+          return `€${defaultValue}K`;
         },
       },
     },
@@ -120,19 +120,19 @@ const EarningsChart = () => {
         const month = w.globals.seriesX[seriesIndex][dataPointIndex];
         const monthName = categories[month];
 
-        const formatter = new Intl.NumberFormat('en-US', {
+        const formatter = new Intl.NumberFormat('fr-FR', {
           style: 'currency',
-          currency: 'USD',
+          currency: 'EUR',
         });
 
         const formattedNumber = formatter.format(number);
 
         return `
           <div class="flex flex-col gap-2 p-3.5">
-            <div class="font-medium text-sm text-secondary-foreground">${monthName}, 2024 Sales</div>
+            <div class="font-medium text-sm text-secondary-foreground">${monthName}, 2024 Cotisations</div>
             <div class="flex items-center gap-1.5">
               <div class="font-semibold text-base text-mono">${formattedNumber}</div>
-              <span class="rounded-full border border-green-200 font-medium dark:border-green-850 text-success-700 bg-green-100 dark:bg-green-950/30 text-[11px] leading-none px-1.25 py-1">+24%</span>
+              <span class="rounded-full border border-green-200 font-medium dark:border-green-850 text-success-700 bg-green-100 dark:bg-green-950/30 text-[11px] leading-none px-1.25 py-1">+12%</span>
             </div>
           </div>
           `;
@@ -183,11 +183,11 @@ const EarningsChart = () => {
   return (
     <Card className="h-full">
       <CardHeader>
-        <CardTitle>Earnings</CardTitle>
+        <CardTitle>Cotisations Mensuelles</CardTitle>
         <div className="flex gap-5">
           <div className="flex items-center gap-2">
             <Label htmlFor="auto-update" className="text-sm">
-              Referrals only
+              Charges incluses
             </Label>
             <Switch id="auto-update" defaultChecked size="sm" />
           </div>

@@ -22,24 +22,24 @@ export function SidebarHeader() {
           <img
             src={toAbsoluteUrl('/media/app/LOGO_SyndExpress.png')}
             className="default-logo h-[80px] max-w-none"
-            alt="Default Logo"
+            alt="Syndic Logo"
           />
           <img
-            src={toAbsoluteUrl('/media/app/mini-logo.svg')}
+            src={toAbsoluteUrl('/media/app/LOGO_SyndExpress.png')}
             className="small-logo h-[22px] max-w-none"
-            alt="Mini Logo"
+            alt="Syndic Logo"
           />
         </div>
         <div className="hidden dark:block">
           <img
-            src={toAbsoluteUrl('/media/app/LOGO_SyndExpress.pmg')}
-            className="default-logo h-[22px] max-w-none"
-            alt="Default Dark Logo"
+            src={toAbsoluteUrl('/media/app/LOGO_SyndExpress.png')}
+            className="default-logo h-[80px] max-w-none"
+            alt="Syndic Logo"
           />
           <img
-            src={toAbsoluteUrl('/media/app/mini-logo.svg')}
+            src={toAbsoluteUrl('/media/app/LOGO_SyndExpress.png')}
             className="small-logo h-[22px] max-w-none"
-            alt="Mini Logo"
+            alt="Syndic Logo"
           />
         </div>
       </Link>

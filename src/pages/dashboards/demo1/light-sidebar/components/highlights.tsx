@@ -40,39 +40,39 @@ const Highlights = ({ limit }: IHighlightsProps) => {
   const rows: IHighlightsRows = [
     {
       icon: RiStore2Line,
-      text: 'Online Store',
-      total: 172,
-      stats: 3.9,
+      text: 'Cotisations',
+      total: 245,
+      stats: 5.2,
       increase: true,
     },
     {
       icon: RiFacebookCircleLine,
-      text: 'Facebook',
-      total: 85,
-      stats: 0.7,
+      text: 'Charges Communes',
+      total: 128,
+      stats: 2.1,
       increase: false,
     },
     {
       icon: RiInstagramLine,
-      text: 'Instagram',
-      total: 36,
-      stats: 8.2,
+      text: 'Prestations',
+      total: 67,
+      stats: 12.5,
       increase: true,
     },
     {
       icon: RiGoogleLine,
-      text: 'Google',
-      total: 26,
-      stats: 8.2,
+      text: 'Maintenance',
+      total: 43,
+      stats: 8.7,
       increase: true,
     },
-    { icon: RiBankLine, text: 'Retail', total: 7, stats: 0.7, increase: false },
+    { icon: RiBankLine, text: 'Fonds Réserves', total: 89, stats: 1.3, increase: false },
   ];
 
   const items: IHighlightsItems = [
-    { badgeColor: 'bg-green-500', label: 'Metronic' },
-    { badgeColor: 'bg-destructive', label: 'Bundle' },
-    { badgeColor: 'bg-violet-500', label: 'MetronicNest' },
+    { badgeColor: 'bg-green-500', label: 'Payé' },
+    { badgeColor: 'bg-destructive', label: 'En attente' },
+    { badgeColor: 'bg-violet-500', label: 'En retard' },
   ];
 
   const renderRow = (row: IHighlightsRow, index: number) => {
@@ -86,7 +86,7 @@ const Highlights = ({ limit }: IHighlightsProps) => {
           <span className="text-sm font-normal text-mono">{row.text}</span>
         </div>
         <div className="flex items-center text-sm font-medium text-foreground gap-6">
-          <span className="lg:text-right">${row.total}k</span>
+          <span className="lg:text-right">€{row.total}k</span>
           <span className="flex items-center justify-end gap-1">
             {row.increase ? (
               <ArrowUp className="text-green-500 size-4" />
@@ -126,12 +126,12 @@ const Highlights = ({ limit }: IHighlightsProps) => {
       <CardContent className="flex flex-col gap-4 p-5 lg:p-7.5 lg:pt-4">
         <div className="flex flex-col gap-0.5">
           <span className="text-sm font-normal text-secondary-foreground">
-            All time sales
+            Total cotisations
           </span>
           <div className="flex items-center gap-2.5">
-            <span className="text-3xl font-semibold text-mono">$295.7k</span>
+            <span className="text-3xl font-semibold text-mono">€245.7k</span>
             <Badge size="sm" variant="success" appearance="outline">
-              +2.7%
+              +5.2%
             </Badge>
           </div>
         </div>

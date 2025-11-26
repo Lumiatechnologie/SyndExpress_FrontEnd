@@ -39,22 +39,21 @@ const EntryCallout = ({ className }: IEntryCalloutProps) => {
               ]}
             />
             <h2 className="text-xl font-semibold text-mono">
-              Connect Today & Join <br />
-              the{' '}
+              Bienvenue sur votre <br />
               <Button mode="link" asChild className="text-xl font-semibold">
-                <Link to="#">KeenThemes Network</Link>
+                <Link to="#">Tableau de Bord Syndic</Link>
               </Button>
             </h2>
             <p className="text-sm font-normal text-secondary-foreground leading-5.5">
-              Enhance your projects with premium themes and <br />
-              templates. Join the KeenThemes community today <br />
-              for top-quality designs and resources.
+              Gérez efficacement vos copropriétés, <br />
+              suivez les cotisations et les charges. <br />
+              Consultez les statistiques et les rapports en temps réel.
             </p>
           </div>
         </CardContent>
         <CardFooter className="justify-center">
           <Button mode="link" underlined="dashed" asChild>
-            <Link to="#">Get Started</Link>
+            <Link to="/habitats">Voir les Habitats</Link>
           </Button>
         </CardFooter>
       </Card>

@@ -21,7 +21,7 @@ export function ClassicLayout() {
             <img
               src={toAbsoluteUrl('/media/app/LOGO_SyndExpress.png')}
               className="h-[100px] max-w-none"
-              alt=""
+              alt="Syndic Logo"
             />
           </Link>
         </div>

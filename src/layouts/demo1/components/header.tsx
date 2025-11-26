@@ -63,7 +63,7 @@ export function Header() {
             <img
               src={toAbsoluteUrl('/media/app/LOGO_SyndExpress.png')}
               className="h-[25px] w-[70px]"
-              alt="mini-logo"
+              alt="Syndic Logo"
             />
           </Link>
           <div className="flex items-center">

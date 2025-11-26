@@ -28,24 +28,24 @@ export function BrandedLayout() {
           <div className="flex flex-col p-8 lg:p-16 gap-4">
             <Link to="/">
               <img
-                src={toAbsoluteUrl('/media/app/mini-logo.svg')}
-                className="h-[28px] max-w-none"
-                alt=""
+                src={toAbsoluteUrl('/media/app/LOGO_SyndExpress.png')}
+                className="h-[80px] max-w-none"
+                alt="Syndic Logo"
               />
             </Link>
 
             <div className="flex flex-col gap-3">
               <h3 className="text-2xl font-semibold text-mono">
-                Secure Dashboard Access
+                Accès Sécurisé au Tableau de Bord
               </h3>
               <div className="text-base font-medium text-secondary-foreground">
-                A robust authentication gateway ensuring
-                <br /> secure&nbsp;
+                Une passerelle d'authentification robuste garantissant
+                <br /> un accès&nbsp;
                 <span className="text-mono font-semibold">
-                  efficient user access
+                  sécurisé et efficace
                 </span>
-                &nbsp;to the Metronic
-                <br /> Dashboard interface.
+                &nbsp;à votre interface
+                <br /> de gestion syndicale.
               </div>
             </div>
           </div>

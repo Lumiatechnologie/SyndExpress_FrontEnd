@@ -43,8 +43,8 @@ export function Demo1LightSidebarPage() {
       <Container>
         <Toolbar>
           <ToolbarHeading
-            title="Dashboard"
-            description="Central Hub for Personal Customization"
+            title="Tableau de Bord Syndic"
+            description="Gestion centralisée de vos copropriétés et cotisations"
           />
           <ToolbarActions>
             <Popover open={isOpen} onOpenChange={setIsOpen}>

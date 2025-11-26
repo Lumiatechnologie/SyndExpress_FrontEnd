@@ -12,10 +12,10 @@ const TeamMeeting = () => {
         <div className="flex items-center justify-between flex-wrap gap-5 mb-7.5">
           <div className="flex flex-col gap-1">
             <span className="text-xl font-semibold text-mono">
-              Team Meeting
+              Assemblée Générale
             </span>
             <span className="text-sm font-semibold text-foreground">
-              09:00 - 09:30
+              14:00 - 16:30
             </span>
           </div>
           <img
@@ -25,9 +25,9 @@ const TeamMeeting = () => {
           />
         </div>
         <p className="text-sm font-normal text-foreground leading-5.5 mb-8">
-          Team meeting to discuss strategies, outline <br />
-          project milestones, define key goals, and <br />
-          establish clear timelines.
+          Assemblée générale annuelle pour discuter <br />
+          du budget, des travaux prévus, et des <br />
+          décisions importantes de la copropriété.
         </p>
         <div className="flex rounded-lg bg-accent/50 gap-10 p-5">
           <div className="flex flex-col gap-5">
@@ -36,13 +36,13 @@ const TeamMeeting = () => {
               Location
             </div>
             <div className="text-sm font-medium text-foreground pt-1.5">
-              Amsterdam
+              Salle des fêtes - Immeuble A
             </div>
           </div>
           <div className="flex flex-col gap-5">
             <div className="flex items-center gap-1.5 text-sm font-normal text-foreground">
               <Users size={16} className="text-base text-muted-foreground" />
-              Team
+              Copropriétaires
             </div>
             <AvatarGroup
               size="size-[30px]"
@@ -61,7 +61,7 @@ const TeamMeeting = () => {
       </CardContent>
       <CardFooter className="justify-center">
         <Button mode="link" underlined="dashed" asChild>
-          <Link to="#">Join Meeting</Link>
+          <Link to="#">Participer à l'AG</Link>
         </Button>
       </CardFooter>
     </Card>
