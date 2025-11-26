@@ -66,10 +66,16 @@ export const MENU_SIDEBAR: MenuConfig = [
       { title: 'Dark Sidebar', path: '/dark-sidebar' },
     ],
   },
+   {
+    title: 'Utilisateurs',
+    icon: Users, // Icône spécifique pour les utilisateurs
+    path: '/users',
+  },
  
-  { heading: 'User' },
   {
     title: 'Habitats',
+        icon: UserCircle,
+
     path: '/habitats',
     // icon: Building, // Vous pouvez décommenter ça plus tard si besoin
   },
@@ -78,6 +84,11 @@ export const MENU_SIDEBAR: MenuConfig = [
     icon: UserCircle,
     path: '/Cotisation',
   },
+  {
+      title: 'Prestation Type',
+      icon: Briefcase, // Assurez-vous d'importer l'icône 'Briefcase' en haut depuis 'lucide-react'
+      path: '/prestation-types',
+    },
   {
     title: 'Public Profile',
     icon: UserCircle,

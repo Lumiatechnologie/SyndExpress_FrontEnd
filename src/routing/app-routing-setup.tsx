@@ -5,7 +5,7 @@ import { Demo1Layout } from '@/layouts/demo1/layout';
 import RoleGuard from '../components/guards/RoleGuard';
 import UserManagement from '../pages/users/UserManagement';
 import HabitatsAdminPage from '@/pages/habitats/HabitatsAdminPage';
-
+import { AccountBasicPage as PrestationTypePage } from '@/pages/PrestationType';
 
 import {
   AccountActivityPage,
@@ -107,7 +107,6 @@ export function AppRoutingSetup() {
         <Route element={<Demo1Layout />}>
           <Route path="/" element={<DefaultPage />} />
           <Route path="/dark-sidebar" element={<Demo1DarkSidebarPage />} />
-
           <Route path="/public-profile/profiles/default/" element={<ProfileDefaultPage />} />
           <Route path="/public-profile/profiles/creator" element={<ProfileCreatorPage />} />
           <Route path="/public-profile/profiles/company" element={<ProfileCompanyPage />} />
@@ -303,15 +302,25 @@ export function AppRoutingSetup() {
             path="/Cotisation"
             element={<AccountTeamMembersPage />}
           />
-          <Route
-            path="/users"
-            element={
+    <Route
+  path="/users"
+  element={
     <RoleGuard roles={['ROLE_ADMIN', 'ROLE_MODERATOR']} fallbackPath="/auth/signin">
-                <UserManagement />
-              </RoleGuard>
-            }
-          />
-          <Route
+      <UserManagement />
+    </RoleGuard>
+  }
+/>
+
+<Route
+  path="/prestation-types"
+  element={
+    <RoleGuard roles={['ROLE_ADMIN', 'ROLE_MODERATOR']} fallbackPath="/auth/signin">
+      <PrestationTypePage />
+    </RoleGuard>
+  }
+/>
+
+<Route
   path="habitats"
   element={
     <RoleGuard roles={['ROLE_ADMIN', 'ROLE_MODERATOR']} fallbackPath="/auth/signin">
@@ -320,6 +329,7 @@ export function AppRoutingSetup() {
   }
 />
         </Route>
+
       </Route>
       <Route path="error/*" element={<ErrorRouting />} />
       <Route path="auth/*" element={<AuthRouting />} />
